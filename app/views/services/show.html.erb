@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название услуги:</strong>
   <%= @service.name %>
 </p>
 
 <p>
-  <strong>Comment:</strong>
+  <strong>Описание услуги:</strong>
   <%= @service.comment %>
 </p>
+<p>
+  <strong>Категория услуги:</strong>
+  <%= @service.categori.name %>
+</p>
+<%= link_to 'Редактировать', edit_service_path(@service) , class:"btn"%> |
+<%= link_to 'Назад', services_path, class:"btn"%>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>

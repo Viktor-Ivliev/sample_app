@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Grafs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date start</th>
+      <th>Date end</th>
+      <th>Table service order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grafs.each do |graf| %>
+      <tr>
+        <td><%= graf.date_start %></td>
+        <td><%= graf.date_end %></td>
+        <td><%= graf.table_service_order_id %></td>
+        <td><%= link_to 'Show', graf %></td>
+        <td><%= link_to 'Edit', edit_graf_path(graf) %></td>
+        <td><%= link_to 'Destroy', graf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Graf', new_graf_path %>

@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
-<% @prices.each do |price| %>
+
 <p>
   <strong>Услуга:</strong>
-  <%= Service.find(price.service_id).name %>
+  <%= @price.service.name %>
 </p>
-<% end %>
+
 <p>
   <strong>Цена:</strong>
   <%= @price.value %>

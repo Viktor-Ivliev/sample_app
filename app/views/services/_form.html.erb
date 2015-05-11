@@ -1,25 +1,31 @@
 <%= form_for(@service) do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+      <h2><%= pluralize(@service.errors.count, "ошибки") %>
+        Услуга не создана, заполните соответсвующие поля:
+      </h2>
 
       <ul>
       <% @service.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li>*<%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+
+    <%= f.label :name, "Название услуги" %><br>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
+
+
+    <%= f.label :comment, "Описание услуги" %><br>
     <%= f.text_area :comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+    <%= f.label :categori_id, "Категория услуги"%><br>
+    <%= f.collection_select(:categori_id, @categori_all, :id, :name) %>
+
+    <%= f.submit "Добавить", class: "btn" %>
+    <%= link_to 'Назад', services_path, class: "btn" %>
+
 <% end %>

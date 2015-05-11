@@ -5,9 +5,11 @@
           <% if signed_in? %>
           <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/587/w512h5121390727217purchaseorder512.png", alt: 'Заказы'),orders_path %></li>
           <% if current_user.admin?  %>
-              <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390857070handlewithcare512.png", alt: 'Услуги'),     prices_path %></li>
+              <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390857070handlewithcare512.png", alt: 'Цены на услуги'),     prices_path %></li>
+              <li><%= link_to image_tag("http://vsedoci.net/wp-content/uploads/2014/11/w256h2561390856940checkout256.png", alt: 'Услуги'),   services_path %></li>
           <%end%>
-          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390856915box512.png", alt: 'Блоки'),    blocks_path %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390856915box512.png", alt: 'Блоки'),    "#" %></li>
+
           <li><%= link_to image_tag("http://idealmebel72.ru/image/data/main/oplata.png", alt: 'Табличная часть'),   table_service_orders_path %></li>
           <li><%= link_to image_tag("https://ddosexpert.com/css/images/about/group.png", alt: 'Клиент'), clients_path %></li>
           <li><%= link_to image_tag("http://www.mba4managers.com/images/courses_logo/project.png", alt: 'Сотрудники'),  users_path %></li>
@@ -26,7 +28,7 @@
             </ul>
           </li>
       <% else %>
-          <li><%= link_to "Войти", signin_path %></li>
+          <li  ><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h5121380476868key.png", alt: 'Войти'), signin_path %></li>
       <% end %>
     </ul>
   </div>

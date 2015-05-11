@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date start:</strong>
+  <%= @graf.date_start %>
+</p>
+
+<p>
+  <strong>Date end:</strong>
+  <%= @graf.date_end %>
+</p>
+
+<p>
+  <strong>Table service order:</strong>
+  <%= @graf.table_service_order_id %>
+</p>
+
+<%= link_to 'Edit', edit_graf_path(@graf) %> |
+<%= link_to 'Back', grafs_path %>

@@ -1,31 +1,32 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Все заказы</h1>
-
-<table>
-  <thead>
+<div class="ClientsCss" >
+  <table >
     <tr>
-      <th>Название заказа</th>
-      <th>Дата заказа</th>
-      <th>Клиент</th>
-      <th colspan="3"></th>
+      <td >
+        Название заказа
+      </td>
+      <td >
+        Дата заказа
+      </td>
+      <td>
+        Клиент
+      </td>
     </tr>
-  </thead>
 
-  <tbody>
+
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.name %></td>
-        <td><%= order.date_order.to_date %></td>
-        <td><%= Client.find(order.client_id).name %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+          <td class="FIO_NAME" ><%= order.name %></td>
+          <td><%= order.date_order.to_date %></td>
+          <td><%= Client.find(order.client_id).name %></td>
+          <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
+          <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
+          <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+</div>
 
 <br>
-
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>

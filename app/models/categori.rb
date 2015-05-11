@@ -1,3 +1,3 @@
 class Categori < ActiveRecord::Base
-  has_many :blocks
+  has_many :services
 end

@@ -15,7 +15,7 @@
 
     <%= f.label :service_id, 'Услуги' %><br>
     <%= f.collection_select(:service_id, @service_all, :id, :name) %>
-    
+    <!--f.select("service_id", "service_id", Service.all.collect {|s| [ s.name, s.id ] }-->
     <%= f.label :value , 'Цена' %><br>
     <%= f.number_field :value %>
 

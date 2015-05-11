@@ -8,7 +8,7 @@ class PricesController < ApplicationController
   # GET /prices/1
   # GET /prices/1.json
   def show
-    @prices = Price.all
+    @prices = pr
   end
  # GET /prices/new
   def new
@@ -24,9 +24,7 @@ class PricesController < ApplicationController
   # POST /prices
   # POST /prices.json
   def create
-    @service = Service.find(price_params[:service_id])
-    @price = @service.prices.build(price_params)
-
+    @price = Price.new(price_params)
     respond_to do |format|
       if @price.save
         format.html { redirect_to @price, notice: 'Цена успешно создана' }

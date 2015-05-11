@@ -1,0 +1,29 @@
+<%= form_for(@graf) do |f| %>
+  <% if @graf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@graf.errors.count, "error") %> prohibited this graf from being saved:</h2>
+
+      <ul>
+      <% @graf.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_start %><br>
+    <%= f.datetime_select :date_start %>
+  </div>
+  <div class="field">
+    <%= f.label :date_end %><br>
+    <%= f.datetime_select :date_end %>
+  </div>
+  <div class="field">
+    <%= f.label :table_service_order_id %><br>
+    <%= f.number_field :table_service_order_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
