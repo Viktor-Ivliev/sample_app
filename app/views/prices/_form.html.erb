@@ -1,0 +1,27 @@
+<%= form_for(@price) do |f| %>
+    <% if @price.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@price.errors.count, "ошибки") %>
+            Цена на услугу не создана, заполните соответсвующие поля:
+          </h2>
+          <ul>
+            <% @price.errors.full_messages.each do |message| %>
+                <li>*<%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.label :service_id, 'Услуги' %><br>
+    <%= f.collection_select(:service_id, @service_all, :id, :name) %>
+    <!--f.select("service_id", "service_id", Service.all.collect {|s| [ s.name, s.id ] }-->
+    <%= f.label :value , 'Цена' %><br>
+    <%= f.number_field :value %>
+
+    <%= f.label :data_price, 'Дата'%><br>
+    <%= f.text_field :data_price, id:"datepicker" %>
+
+    <%= f.submit "Добавить", class: "btn"%>
+    <%= link_to 'Назад', prices_path , class: "btn"%>
+<% end %>

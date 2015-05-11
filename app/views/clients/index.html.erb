@@ -1,0 +1,43 @@
+<% provide(:title, 'Все клиенты') %>
+<p id="notice"><%= notice %></p>
+
+<h1>Все клиенты</h1>
+<div class="ClientsCss" >
+  <table >
+    <tr>
+      <td class="FIO_NAME">
+        ФИО
+      </td>
+      <td >
+        Телефон
+      </td>
+      <td>
+      Почта
+    </td>
+      <td>
+        Адрес
+      </td>
+      <td>
+        Комментарий
+      </td>
+    </tr>
+
+
+    <% @clients.each do |client| %>
+       <tr>
+         <td><%= client.name %></td>
+         <td><%= client.tel %></td>
+         <td><%= client.email %></td>
+         <td><%= client.adress %></td>
+         <td><%= client.comments %></td>
+         <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),client, class:"btn-see"%></td>
+         <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_client_path(client), class:"btn-see" %></td>
+         <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), client, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+       </tr>
+    <% end %>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'Новый клиент', new_client_path, class: "btn btn-large btn-primary" %>

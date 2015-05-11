@@ -1,0 +1,112 @@
+// Place all the styles related to the Clients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.ClientsCss {
+  margin:0px;
+  padding:0px;
+  width:100%;
+  border:1px solid #ffffff;
+
+  -moz-border-radius-bottomleft:0px;
+  -webkit-border-bottom-left-radius:0px;
+  border-bottom-left-radius:0px;
+
+  -moz-border-radius-bottomright:0px;
+  -webkit-border-bottom-right-radius:0px;
+  border-bottom-right-radius:0px;
+
+  -moz-border-radius-topright:0px;
+  -webkit-border-top-right-radius:0px;
+  border-top-right-radius:0px;
+
+  -moz-border-radius-topleft:0px;
+  -webkit-border-top-left-radius:0px;
+  border-top-left-radius:0px;
+}
+.ClientsCss table{
+   border-collapse: collapse;
+   border-spacing: 0;
+   width:100%;
+   height:100%;
+ }
+.ClientsCss tr:last-child td:last-child {
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+  }
+.ClientsCss table tr:first-child td:first-child {
+  -moz-border-radius-topleft:0px;
+  -webkit-border-top-left-radius:0px;
+  border-top-left-radius:0px;
+}
+.ClientsCss table tr:first-child td:last-child {
+  -moz-border-radius-topright:0px;
+  -webkit-border-top-right-radius:0px;
+  border-top-right-radius:0px;
+}
+.ClientsCss tr:last-child td:first-child{
+   -moz-border-radius-bottomleft:0px;
+   -webkit-border-bottom-left-radius:0px;
+   border-bottom-left-radius:0px;
+ }
+.ClientsCss tr:hover td{
+
+  }
+.ClientsCss tr:nth-child(odd){
+  background-color:#ffffff;
+}
+.ClientsCss tr:nth-child(even){
+  background-color: rgba(255, 248, 250, 0);
+}
+.ClientsCss td{
+  vertical-align:middle;
+  border:1px solid #b2abab;
+  border-width:0px 1px 1px 0px;
+  text-align:left;
+  padding:15px;
+  font-size:15px;
+  font-family:Times New Roman;
+  font-weight:normal;
+  color:#000000;
+ }
+.ClientsCss tr:last-child td{
+ border-width:0px 1px 0px 0px;
+ }
+.ClientsCss tr td:last-child{
+ border-width:0px 0px 1px 0px;
+}
+.ClientsCss tr:last-child td:last-child{
+ border-width:0px 0px 0px 0px;
+}
+.ClientsCss tr:first-child td{
+  background:-o-linear-gradient(bottom, #B95649 5%, #B95649 100%);
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #B95649), color-stop(1, #B95649) );
+  background:-moz-linear-gradient(top, #B95649 5%, #B95649 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#5c8aa5", endColorstr="#5c8aa5");
+  background: -o-linear-gradient(top, #b95649, #b95649);
+  background-color: #b95649;
+  border:0px solid #b95649;
+  text-align:center;
+  border-width:0px 0px 1px 1px;
+  font-size:14px;
+  font-family:Georgia;
+  font-weight:bold;
+  color: #000000;
+}
+.ClientsCss tr:first-child:hover td{
+  background:-o-linear-gradient(bottom, #B95649 5%, #B95649 100%);
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #B95649), color-stop(1, #B95649) );
+  background:-moz-linear-gradient(top, #B95649 5%, #b95649 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#5c8aa5", endColorstr="#5c8aa5");
+  background: -o-linear-gradient(top, #b95649, #b95649);
+  background-color: #b95649;
+}
+.ClientsCss tr:first-child td:first-child{
+  border-width:0px 0px 1px 0px;
+}
+.ClientsCss tr:first-child td:last-child{
+  border-width:0px 0px 1px 1px;
+}
+.FIO_NAME{
+  width: 100px;
+}

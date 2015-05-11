@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Categoris</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categoris.each do |categori| %>
+      <tr>
+        <td><%= categori.name %></td>
+        <td><%= link_to 'Show', categori %></td>
+        <td><%= link_to 'Edit', edit_categori_path(categori) %></td>
+        <td><%= link_to 'Destroy', categori, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Categori', new_categori_path %>

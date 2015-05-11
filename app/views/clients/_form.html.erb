@@ -1,0 +1,40 @@
+<%= form_for(@client) do |f| %>
+    <% if @client.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@client.errors.count, "Ошибки") %>
+            Клиент не создан, заполните соответсвующие поля:
+          </h2>
+          <ul>
+            <% @client.errors.full_messages.each do |message| %>
+                <li>*<%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= f.label :name, 'Имя' %><br>
+    <%= f.text_field :name %>
+
+
+    <%= f.label :tel, 'Телефон' %><br>
+    <%= f.text_field :tel %>
+
+
+    <%= f.label :email, 'Почта' %><br>
+    <%= f.text_field :email %>
+
+
+    <%= f.label :adress, 'Адрес' %><br>
+    <%= f.text_field :adress %>
+
+
+    <%= f.label :comments, 'Комментарий' %><br>
+    <%= f.text_field :comments %>
+
+
+    <%= f.submit "Добавить", class: "btn" %>
+    <%= link_to 'Назад', clients_path, class: "btn" %>
+
+
+<% end %>

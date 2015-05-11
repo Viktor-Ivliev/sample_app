@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<% @prices.each do |price| %>
+<p>
+  <strong>Услуга:</strong>
+  <%= Service.find(price.service_id).name %>
+</p>
+<% end %>
+<p>
+  <strong>Цена:</strong>
+  <%= @price.value %>
+</p>
+<p>
+  <strong>Дата:</strong>
+  <%= @price.data_price.to_date %>
+</p>
+<%= link_to 'Редактировать', edit_price_path(@price) , class:"btn"%> |
+<%= link_to 'Назад', prices_path, class:"btn"%>

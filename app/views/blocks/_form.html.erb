@@ -1,0 +1,26 @@
+<%= form_for(@block) do |f| %>
+  <% if @block.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@block.errors.count, "ошибки") %>
+        Блок не создан, заполните соответсвующие поля:
+      </h2>
+      <ul>
+      <% @block.errors.full_messages.each do |message| %>
+        <li>*<%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.label :name,"Наименование блока"%><br>
+    <%= f.text_field :name %>
+
+
+    <%= f.label :categori_id,"Категория блока" %><br>
+    <%= f.collection_select(:categori_id, @categori_all, :id, :name) %>
+
+    <%= f.submit "Добавить", class: "btn" %>
+    <%= link_to 'Назад', blocks_path , class: "btn"%>
+
+<% end %>

@@ -1,0 +1,30 @@
+<% provide(:title, @client.name) %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Имя:</strong>
+  <%= @client.name %>
+</p>
+
+<p>
+  <strong>Телефон:</strong>
+  <%= @client.tel %>
+</p>
+
+<p>
+  <strong>Почта:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
+  <strong>Адрес:</strong>
+  <%= @client.adress %>
+</p>
+
+<p>
+  <strong>Комментарий:</strong>
+  <%= @client.comments %>
+</p>
+
+<%= link_to 'Редактировать', edit_client_path(@client), class: "btn btn-large btn-primary" %> |
+<%= link_to 'Назад', clients_path, class: "btn btn-large btn-primary" %>

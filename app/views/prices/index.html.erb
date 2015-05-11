@@ -1,0 +1,31 @@
+<% provide(:title, 'Все цены') %>
+<p id="notice"><%= notice %></p>
+<h1>Список цена на услуги</h1>
+<div class="ClientsCss" >
+<table>
+  <tr>
+    <td >
+      Услуга
+    </td>
+    <td >
+      Цена
+    </td>
+    <td>
+      Дата
+    </td>
+  </tr>
+    <% @prices.each do |price| %>
+      <tr>
+        <td><%= Service.find(price.service_id).name %></td>
+        <td><%= price.value %></td>
+        <td><%= price.data_price.to_date %></td>
+        <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"), price, class:"btn-see"%></td>
+        <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_price_path(price), class:"btn-see" %></td>
+        <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), price, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<%= link_to 'Новая цена', new_price_path, class: "btn btn-large btn-primary" %>

@@ -1,0 +1,29 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+
+
+    <%= f.label :date_order %><br>
+    <%= f.date_select :date_order %>
+
+
+    <%= f.label :client_id %><br>
+    <%= f.collection_select(:client_id, @client_all, :id, :name ) %>
+
+
+    <%= f.submit %>
+
+<% end %>
