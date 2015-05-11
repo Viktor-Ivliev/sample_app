@@ -37,6 +37,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'haml'
+# гем для сохранения данных даты в правильном формате
+gem 'chronic'
+gem 'chronic_duration'
+
 group :development, :test do
   gem 'pry-nav'
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console

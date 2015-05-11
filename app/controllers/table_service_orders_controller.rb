@@ -21,23 +21,21 @@ class TableServiceOrdersController < ApplicationController
 
   # GET /table_service_orders/1/edit
   def edit
+    @order_all = Order.all
+    @service_all = Service.all
   end
 
   # POST /table_service_orders
   # POST /table_service_orders.json
   def create
-    @order = Order.find(table_service_order_params[:order_id])
-    @service = Service.find(table_service_order_params[:service_id])
-    @table_service_order_service = @service.table_service_orders.build(table_service_order_params)
-    @table_service_order_order = @order.table_service_orders.build(table_service_order_params)
-
+    @table_service_orders = TableServiceOrder.new(table_service_order_params)
     respond_to do |format|
-      if @table_service_order_service.save
-        format.html { redirect_to @table_service_order, notice: 'Table service order was successfully created.' }
+      if @table_service_orders.save
+        format.html { redirect_to @table_service_orders, notice: 'Table service order was successfully created.' }
         format.json { render :show, status: :created, location: @table_service_order }
       else
         format.html { render :new }
-        format.json { render json: @table_service_order.errors, status: :unprocessable_entity }
+        format.json { render json: @table_service_orders.errors, status: :unprocessable_entity }
       end
     end
   end
