@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   resources :grafs
 
-  resources :table_service_orders
-
   resources :orders
 
   resources :categoris
   resources :blocks
-  resources :services
+  resources :services do
+    get 'get_services_grup', on: :collection
+  end
   resources :prices
   resources :clients
   resources :users

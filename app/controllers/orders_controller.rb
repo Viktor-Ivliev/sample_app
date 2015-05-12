@@ -16,13 +16,13 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @client_all = Client.all
-    @services_all = Service.all
+    @categori_all = Categori.all
   end
 
   # GET /orders/1/edit
   def edit
     @client_all = Client.all
-    @services_all = Service.all
+    @categori_all = Categori.all
     @order.service_ids = @order.services.pluck(:id).join(',')
   end
 

@@ -23,8 +23,11 @@
     <%= f.label :client_id %><br>
     <%= f.collection_select(:client_id, @client_all, :id, :name ) %>
 
-    <%= f.label :service_id %><br>
-    <%= f.text_field :service_ids, 'data-pre' =>@order.services.map(&:attributes).to_json %>
+    <%= label :categori_id, "Категория услуги"%><br>
+    <%= collection_select(nil ,:categori_id, @categori_all, :id, :name, include_blank: 'all') %>
+
+    <%= f.label :service_id, "Услуги"%><br>
+    <%= f.text_field :service_ids, 'data-pre' => @order.services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } }.to_json, "data-p" =>":javascript $('#_categori_id').val();" %>
 
     <%= f.label :info %><br>
     <%= f.text_field :info %>
@@ -32,11 +35,18 @@
     <%= f.submit %>
 
 <% end %>
+
 <script type="text/javascript">
-    $(function() {
-        $("#order_service_ids").tokenInput("/services.json", {
+    $(document).ready(function() {
+        nbQuery = function(sets) {
+          return "region=" + document.getElementById("_categori_id").value + "&q";
+        };
+        $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
             crossDomain: false,
+            getQueryParam: nbQuery,
             prePopulate: $("#order_service_ids").data("pre")
         });
     });
+
+
 </script>
