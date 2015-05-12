@@ -68,7 +68,6 @@ class ServicesController < ApplicationController
   end
 
   def get_services_grup
-    binding.pry
     @services = Service.all
     respond_to do |format|
       format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
