@@ -13,6 +13,10 @@
   <strong>Категория услуги:</strong>
   <%= @service.categori.name %>
 </p>
+<p>
+  <strong>Скидка:</strong>
+  <%= @service.discount %>
+</p>
 <%= link_to 'Редактировать', edit_service_path(@service) , class:"btn"%> |
 <%= link_to 'Назад', services_path, class:"btn"%>
 

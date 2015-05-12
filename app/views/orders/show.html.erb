@@ -12,7 +12,21 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @order.client_id %>
+  <%= @order.client.name %>
+</p>
+
+<p>
+  <strong>Services:</strong>
+  <br/>
+  <% @order.services.each do |service| %>
+  	<span>
+  		<%= service.name %>
+  	</span><br/>
+  <% end %>
+</p>
+<p>
+  <strong>Info:</strong>
+  <%= @order.info %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
