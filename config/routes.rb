@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :k_indactivities
+
   resources :grafs
 
   resources :table_service_orders

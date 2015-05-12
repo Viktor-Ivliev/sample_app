@@ -16,18 +16,16 @@
 </p>
 
 <p>
-  <strong>Services:</strong>
-  <br/>
-  <% @order.services.each do |service| %>
-  	<span>
-  		<%= service.name %>
-  	</span><br/>
-  <% end %>
-</p>
+   <strong>Services:</strong>
+   <br/>
+   <% @order.services.each do |service| %>
+       	<span>
+ 		<%= service.name %></span><br/>
+        <% end %>
+  </p>
 <p>
-  <strong>Info:</strong>
-  <%= @order.info %>
+   <strong>Info:</strong>
+    <%= @order.info %>
 </p>
-
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

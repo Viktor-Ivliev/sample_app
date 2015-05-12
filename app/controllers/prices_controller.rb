@@ -8,7 +8,7 @@ class PricesController < ApplicationController
   # GET /prices/1
   # GET /prices/1.json
   def show
-    @prices = pr
+
   end
  # GET /prices/new
   def new
@@ -18,6 +18,7 @@ class PricesController < ApplicationController
   end
   # GET /prices/1/edit
   def edit
+    @service_all = Service.all
   end
   #выподающий список
   #collection_select(:services,:id, @service_all, :id, :name, {},{:multiple => true})

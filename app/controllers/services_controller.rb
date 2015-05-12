@@ -6,9 +6,9 @@ class ServicesController < ApplicationController
   def index
     @services = Service.all
     respond_to do |format|
-      format.html
-      format.json { render :json => @services.map(&:attributes) }
-    end
+            format.html
+            format.json { render :json => @services.map(&:attributes) }
+          end
   end
 
   # GET /services/1

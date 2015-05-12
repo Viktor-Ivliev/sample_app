@@ -1,0 +1,2 @@
+module KIndactivitiesHelper
+end

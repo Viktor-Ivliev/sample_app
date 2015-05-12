@@ -1,0 +1,21 @@
+<%= form_for(@k_indactivity) do |f| %>
+  <% if @k_indactivity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@k_indactivity.errors.count, "error") %> prohibited this k_indactivity from being saved:</h2>
+
+      <ul>
+      <% @k_indactivity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

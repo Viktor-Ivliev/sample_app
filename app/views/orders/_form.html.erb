@@ -23,24 +23,20 @@
     <%= f.label :client_id %><br>
     <%= f.collection_select(:client_id, @client_all, :id, :name ) %>
 
-   
     <%= f.label :service_id %><br>
     <%= f.text_field :service_ids, 'data-pre' =>@order.services.map(&:attributes).to_json %>
 
     <%= f.label :info %><br>
     <%= f.text_field :info %>
 
-
     <%= f.submit %>
-    
 
 <% end %>
-
 <script type="text/javascript">
-  $(function() {
-    $("#order_service_ids").tokenInput("/services.json", {
-      crossDomain: false,
-      prePopulate: $("#order_service_ids").data("pre")
+    $(function() {
+        $("#order_service_ids").tokenInput("/services.json", {
+            crossDomain: false,
+            prePopulate: $("#order_service_ids").data("pre")
+        });
     });
-  });
 </script>
