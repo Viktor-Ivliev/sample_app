@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
+  resources :activities
+
   resources :k_indactivities
-
   resources :grafs
-
   resources :orders
-
   resources :categoris
   resources :blocks
   resources :services do
-    get 'get_services_grup', on: :collection
-  end
+      get 'get_services_grup', on: :collection
+      end
   resources :prices
   resources :clients
   resources :users

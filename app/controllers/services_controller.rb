@@ -8,7 +8,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
-    end
+        end
   end
 
   # GET /services/1
@@ -20,7 +20,6 @@ class ServicesController < ApplicationController
   def new
     @service = Service.new
     @categori_all = Categori.all
-
   end
 
   # GET /services/1/edit
@@ -67,16 +66,17 @@ class ServicesController < ApplicationController
     end
   end
 
-  def get_services_grup
-    @services = if params[:region].blank?
-                  Service.all
-                else
-                  Service.where("categori_id = ?", params[:region])
-                end
-    respond_to do |format|
-      format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
-    end
-  end
+ def get_services_grup
+  @services = if params[:region].blank?
+  Service.all
+      else
+           Service.where("categori_id = ?", params[:region])
+      end
+       respond_to do |format|
+         format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
+       end
+ end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

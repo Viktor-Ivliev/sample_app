@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название заказа:</strong>
   <%= @order.name %>
 </p>
 
 <p>
-  <strong>Date order:</strong>
-  <%= @order.date_order %>
+  <strong>Дата заказа:</strong>
+  <%= @order.date_order.to_date %>
 </p>
 
 <p>
-  <strong>Client:</strong>
+  <strong>Клиент:</strong>
   <%= @order.client.name %>
 </p>
 
 <p>
-   <strong>Services:</strong>
+   <strong>Услуги:</strong>
    <br/>
    <% @order.services.each do |service| %>
        	<span>
@@ -24,7 +24,7 @@
         <% end %>
   </p>
 <p>
-   <strong>Info:</strong>
+   <strong>Дополнительная информация:</strong>
     <%= @order.info %>
 </p>
 <%= link_to 'Edit', edit_order_path(@order) %> |

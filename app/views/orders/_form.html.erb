@@ -12,15 +12,15 @@
   <% end %>
 
 
-    <%= f.label :name %><br>
+    <%= f.label :name, "Название заказа"%><br>
     <%= f.text_field :name %>
 
 
-    <%= f.label :date_order %><br>
-    <%= f.date_select :date_order %>
+    <%= f.label :date_order, "Дата заказа" %><br>
+    <%= f.text_field :date_order, id:"datepicker"%>
 
 
-    <%= f.label :client_id %><br>
+    <%= f.label :client_id , "Клиента"%><br>
     <%= f.collection_select(:client_id, @client_all, :id, :name ) %>
 
     <%= label :categori_id, "Категория услуги"%><br>
@@ -29,16 +29,15 @@
     <%= f.label :service_id, "Услуги"%><br>
     <%= f.text_field :service_ids, 'data-pre' => @order.services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } }.to_json %>
 
-    <%= f.label :info %><br>
+    <%= f.label :info, "Дополнительная информация" %><br>
     <%= f.text_field :info %>
 
     <%= f.submit %>
 
 <% end %>
-
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
+               $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
             crossDomain: false,
             prePopulate: $("#order_service_ids").data("pre")
         });

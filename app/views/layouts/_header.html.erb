@@ -1,16 +1,18 @@
 <div class="menu-index">
   <div id="sidebar-index">
     <ul>
-          <li><%= link_to image_tag("logo.png", alt: 'Лого'), root_path , id: "logo" %></li>
+          <li><%= link_to image_tag("logo.png", alt: 'Лого', title:"Главная"), root_path , id: "logo" %></li>
           <% if signed_in? %>
-          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/587/w512h5121390727217purchaseorder512.png", alt: 'Заказы'),orders_path %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/587/w512h5121390727217purchaseorder512.png", alt: 'Заказы', title:"Заказы"),orders_path %></li>
           <% if current_user.admin?  %>
-              <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390857070handlewithcare512.png", alt: 'Цены на услуги'),     prices_path %></li>
-              <li><%= link_to image_tag("http://vsedoci.net/wp-content/uploads/2014/11/w256h2561390856940checkout256.png", alt: 'Услуги'),   services_path %></li>
+              <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390857141pricetag512.png", alt: 'Цены на услуги', title:"Цены на услуги"),     prices_path %></li>
+              <li><%= link_to image_tag("http://vsedoci.net/wp-content/uploads/2014/11/w256h2561390856940checkout256.png", alt: 'Услуги', title:"Услуги"),   services_path %></li>
           <%end%>
-          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390856915box512.png", alt: 'Блоки'),    "#" %></li>
-          <li><%= link_to image_tag("https://ddosexpert.com/css/images/about/group.png", alt: 'Клиент'), clients_path %></li>
-          <li><%= link_to image_tag("http://www.mba4managers.com/images/courses_logo/project.png", alt: 'Сотрудники'),  users_path %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/613/w256h2561390849392combo256.png", alt: 'Анализ', title:"Анализ"),    "#" %></li>
+          <li><%= link_to image_tag("http://www.mba4managers.com/images/courses_logo/project.png", alt: 'Клиент', title:"Клиенты"), clients_path %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/607/w512h5121390848328appointmentreminders512.png", alt: 'состояние выполнение', title:"Состояние выполнения"),  "#" %></li>
+          <li><%= link_to image_tag("http://cs612127.vk.me/u90486579/docs/6d27bda6b0a6/thin-0578_information_office_desk_support_help.png?extra=TjJ_dkOrjcW1kcRW3obNxNdfAml76wKQPMV_PKB8sMicuz4W6qsgmqCUWYarEqSkEw31GU-DYiv6ULrZi7PTMc7SzsGn7g", alt: 'Деятельность сотрудника', title:"Деятельность сотрудников"),  "#" %></li>
+          <li><%= link_to image_tag("http://cs612127.vk.me/u90486579/docs/a4134d3e3efb/support_chat-512.png?extra=hDoT_Z2xvTFomfCatEkw6Xm2eFv48dE60kk1Wie8xYn1aVf1J0ubn4d4GoB3mil5HbnXuWizHDzkkCsSEVs42thBjMArWQ", alt: 'Сотрудники', title:"Сотрудники"),  users_path %></li>
           <li id="fat-menu" class="dropdown">
 
             <a href="#"  class="dropdown-toggle" data-toggle="dropdown">

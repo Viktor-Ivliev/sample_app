@@ -16,7 +16,7 @@ html {
 
 body {
  /* padding-top: 60px;*/
-  /*background: #1B130F;*/
+  /*background: rgba(42, 19, 17, 0.97);*/
 }
 
 section {
@@ -222,7 +222,7 @@ input {
   vertical-align: middle;
   text-align: center;
   color: #ffffff;
-  background: #B95649;
+  background: #5c8aa5;
   border: 1px solid #ddd;
   font-size: 25px;
 }
@@ -488,6 +488,11 @@ img {
   bottom: 0px;
   position: fixed
 }
-.tanya{
-  color:#DD5757;
+
+.zagolovki {
+  color: #B95649;
+  transition: all 1s;
+}
+.zagolovki:hover {
+  color: #5C8AA5;
 }
