@@ -68,7 +68,11 @@ class ServicesController < ApplicationController
   end
 
   def get_services_grup
-    @services = Service.all
+    @services = if params[:region].blank?
+                  Service.all
+                else
+                  Service.where("categori_id = ?", params[:region])
+                end
     respond_to do |format|
       format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
     end

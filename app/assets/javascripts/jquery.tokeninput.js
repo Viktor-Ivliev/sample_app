@@ -819,7 +819,7 @@ $.TokenList = function (input, url_or_data, settings) {
 
     // compute the dynamic URL
     function computeURL() {
-        var url = settings.url;
+        var url = settings.url+'?region=' + $('#_categori_id').val();
         if(typeof settings.url == 'function') {
             url = settings.url.call();
         }
