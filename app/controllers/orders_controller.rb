@@ -30,12 +30,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    #order_params[:grafs_attributes] = params[:order][:grafs_attributes]
+
     @order = Order.new(order_params)
     respond_to do |format|
       if @order.save
         add_service(@order, order_params[:service_ids])
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @order, notice: 'Заказ был успешно добавлен' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -48,10 +48,10 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
-      #order_params[:grafs_attributes] = params[:order][:grafs_attributes]
+
       if @order.update(order_params)
         add_service(@order, order_params[:service_ids])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'Заказ был успешно обновлен' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: 'Заказ был успешно удален' }
       format.json { head :no_content }
     end
   end

@@ -24,7 +24,6 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-
     @categori_all = Categori.all
   end
 
@@ -68,15 +67,15 @@ class ServicesController < ApplicationController
   end
 
   def get_services_grup
-    @services = if params[:region].blank?
-              Service.where("name like ?", "%%#{params[:q]}%")
-            else
-              Service.where("categori_id = ?", params[:region]).where("name like ?", "%%#{params[:q]}%")
-            end
-    respond_to do |format|
-      format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
+        @services = if params[:region].blank?
+                  Service.where("name like ?", "%%#{params[:q]}%")
+                else
+                  Service.where("categori_id = ?", params[:region]).where("name like ?", "%%#{params[:q]}%")
+                end
+        respond_to do |format|
+          format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
+        end
     end
-  end
 
 
   private

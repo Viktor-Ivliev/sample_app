@@ -27,5 +27,5 @@
    <strong>Дополнительная информация:</strong>
     <%= @order.info %>
 </p>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Редактировать', edit_order_path(@order),class: "btn" %> |
+<%= link_to 'Назад',  orders_path, class: "btn" %>

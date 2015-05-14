@@ -14,20 +14,18 @@
 //= require jquery_ujs
 //= require jquery.tokeninput
 //= require bootstrap
+// require jquery-ui.js
+// require jquery-1.10.2
 // require jquery.ui.datepicker
-//= require turbolinks
+// require turbolinks
 // require_tree .
-
-
-
 function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").hide();
-}
+      $(link).prev("input[type=hidden]").val("1");
+      $(link).closest(".fields").hide();
+    }
 
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
-}
-
+    function add_fields(link, association, content) {
+         var new_id = new Date().getTime();
+         var regexp = new RegExp("new_" + association, "g")
+              $(link).parent().before(content.replace(regexp, new_id));
+        }

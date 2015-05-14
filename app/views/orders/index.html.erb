@@ -1,6 +1,7 @@
 <% provide(:title, 'Все заказы') %>
 <p id="notice"><%= notice %></p>
 <h1 class="zagolovki">Все заказы</h1>
+<%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
 <div class="ClientsCss" >
   <table >
     <tr>
@@ -13,14 +14,25 @@
       <td>
         Клиент
       </td>
+     <td >
+       Услуги
+      </td>
+      <td>
+        Дополнительная информация
+      </td>
     </tr>
 
 
     <% @orders.each do |order| %>
         <tr>
-          <td class="FIO_NAME" ><%= order.name %></td>
-          <td><%#= order.date_order.to_date %><%= order.date_order %></td>
+          <td  ><%= order.name %></td>
+          <td><%= order.date_order.to_date %></td>
           <td><%= Client.find(order.client_id).name %></td>
+          <td> <% order.services.each do |service| %>
+       	<span>
+ 		<%= service.name %></span><br/>
+          <% end %></td>
+          <td><%= order.info %></td>
           <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
           <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
           <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
@@ -30,4 +42,3 @@
 </div>
 
 <br>
-<%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
