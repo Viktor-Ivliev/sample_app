@@ -26,7 +26,7 @@
     <% @orders.each do |order| %>
         <tr>
           <td  ><%= order.name %></td>
-          <td><%= order.date_order.to_date %></td>
+          <td><%= order.date_order%></td>
           <td><%= Client.find(order.client_id).name %></td>
           <td> <% order.services.each do |service| %>
        	<span>
