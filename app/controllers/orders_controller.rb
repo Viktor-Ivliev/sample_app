@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.grafs.build
     @client_all = Client.all
     @categori_all = Categori.all
   end
@@ -29,6 +30,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    #order_params[:grafs_attributes] = params[:order][:grafs_attributes]
     @order = Order.new(order_params)
     respond_to do |format|
       if @order.save
@@ -46,6 +48,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
+      #order_params[:grafs_attributes] = params[:order][:grafs_attributes]
       if @order.update(order_params)
         add_service(@order, order_params[:service_ids])
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
@@ -87,6 +90,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :date_order, :client_id, :service_ids, :info)
+      params.require(:order).permit(:name, :date_order, :client_id, :service_ids, :info, grafs_attributes: [ :id, :date_start, :date_end, "_destroy"])
     end
 end

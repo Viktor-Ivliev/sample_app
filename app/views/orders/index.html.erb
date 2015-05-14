@@ -19,7 +19,7 @@
     <% @orders.each do |order| %>
         <tr>
           <td class="FIO_NAME" ><%= order.name %></td>
-          <td><%= order.date_order.to_date %></td>
+          <td><%#= order.date_order.to_date %><%= order.date_order %></td>
           <td><%= Client.find(order.client_id).name %></td>
           <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
           <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>

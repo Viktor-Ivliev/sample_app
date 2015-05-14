@@ -32,16 +32,24 @@
     <%= f.label :info, "Дополнительная информация" %><br>
     <%= f.text_field :info %>
 
+    Даты показа
+    <%= f.fields_for :grafs do |builder| %>
+      <%= render "graf_fields", :f => builder %>
+    <% end %>
+     
+    <p><%= link_to_add_fields "Добавить дату", f, :grafs %></p>
+
     <%= f.submit %>
 
 <% end %>
+
+
 <script type="text/javascript">
-    $(document).ready(function() {
-               $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
-            crossDomain: false,
-            prePopulate: $("#order_service_ids").data("pre")
-        });
+  $(document).ready(function() {
+    $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
+        crossDomain: false,
+        prePopulate: $("#order_service_ids").data("pre"),
+        preventDuplicates: true
     });
-
-
+  });
 </script>
