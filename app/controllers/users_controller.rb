@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   def show
+    @banner6 = Order.joins(table_service_orders: :service).where("service_id = 31")
     @user = User.find(params[:id])
     @service = @user.services.paginate(page: params[:page])
   end

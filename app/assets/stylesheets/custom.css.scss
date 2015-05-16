@@ -337,6 +337,7 @@ float: left;
   max-width: 2000px;
   padding: 0px;
   margin: 0 auto;
+
 }
 /* стили секций с содержанием */
 .content-menu {
@@ -344,9 +345,11 @@ float: left;
   padding: 15px;
   background: #fff;
   border: 1px solid #ddd;
+
 }
 .tabs input {
   display: none;
+
 }
 /* стили вкладок (табов) */
 .tabs label {
@@ -502,3 +505,8 @@ img {
 .dropdown ul li a:hover{
   background: #B95649;;
 }
+.modal {
+  width: 1000px;
+  margin-left: -477px;
+}
+
