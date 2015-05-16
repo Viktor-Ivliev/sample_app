@@ -15,10 +15,12 @@ class GrafsController < ApplicationController
   # GET /grafs/new
   def new
     @graf = Graf.new
+    @order_all = Order.all
   end
 
   # GET /grafs/1/edit
   def edit
+    @order_all = Order.all
   end
 
   # POST /grafs

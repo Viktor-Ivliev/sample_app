@@ -151,35 +151,36 @@
 <!-- тут для каждого твоего банера свое модальное окно -->
 <!-- Button trigger modal -->
 <script type="text/javascript">
+      $('.modal.fade.bs-example-modal-lg').modal('hide');
       $( ".banner01" ).click(function() {
-            $('#myModal1').modal()
+            $('#myModal1').modal();
           });
       $( ".banner02" ).click(function() {
-            $('#myModal2').modal()
+            $('#myModal2').modal();
           });
       $( ".banner03" ).click(function() {
-          $('#myModal3').modal()
+          $('#myModal3').modal();
       });
       $( ".banner04" ).click(function() {
-          $('#myModal4').modal()
+          $('#myModal4').modal();
       });
       $( ".banner05" ).click(function() {
-          $('#myModal5').modal()
+          $('#myModal5').modal();
       });
       $( ".banner06" ).click(function() {
-          $('#myModal6').modal()
+          $('#myModal6').modal();
       });
       $( ".banner07" ).click(function() {
-          $('#myModal7').modal()
+          $('#myModal7').modal();
       });
       $( ".banner08" ).click(function() {
-          $('#myModal8').modal()
+          $('#myModal8').modal();
       });
       $( ".banner09" ).click(function() {
-          $('#myModal9').modal()
+          $('#myModal9').modal();
       });
       $( ".banner10" ).click(function() {
-          $('#myModal10').modal()
+          $('#myModal10').modal();
       });
     </script>
 
@@ -189,48 +190,18 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">Банер 1. Список заказов.</h4>
         </div>
         <div class="modal-body">
           <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
             <div class="ClientsCss" >
               <table >
-                <tr>
-                  <td >
-                    Название заказа
-                  </td>
-                  <td >
-                    Дата заказа
-                  </td>
-                  <td>
-                    Клиент
-                  </td>
-                  <td>
-                    Дата начало показа
-                  </td>
-                  <td>
-                    Дата конца показа
-                  </td>
-                </tr>
-
+                <%= render "modal_header_table_baner" %>
                 <% Order.joins(table_service_orders: :service).where("service_id = 26").each do |order| %>
-                       <tr>
-                      <td  ><%= order.name %></td>
-                      <td><%= order.date_order%></td>
-                      <td><%= Client.find(order.client_id).name %></td>
-                         <% order.grafs .each do |graf|%>
-                             <td><%=graf.date_start %></td>
-                             <td><%=graf.date_end %></td>
-                         <% end %>
-                         <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                      <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                      <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                    </tr>
-                    <% end %>
+                  <%= render "modal_body_table_baner", order: order %> 
+                <% end %>
               </table>
             </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
@@ -244,45 +215,17 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">Банер 2. Список заказов.</h4>
         </div>
         <div class="modal-body">
           <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
             <div class="ClientsCss" >
               <table >
-                <tr>
-                  <td >
-                    Название заказа
-                  </td>
-                  <td >
-                    Дата заказа
-                  </td>
-                  <td>
-                    Клиент
-                  </td>
-                  <td>
-                    Дата начало показа
-                  </td>
-                  <td>
-                    Дата конца показа
-                  </td>
-                </tr>
+                <%= render "modal_header_table_baner" %>
 
                 <% Order.joins(table_service_orders: :service).where("service_id = 27").each do |order| %>
-                        <tr>
-                      <td  ><%= order.name %></td>
-                      <td><%= order.date_order%></td>
-                      <td><%= Client.find(order.client_id).name %></td>
-                          <% order.grafs .each do |graf|%>
-                              <td><%=graf.date_start %></td>
-                              <td><%=graf.date_end %></td>
-                          <% end %>
-                      <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                      <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                      <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                    </tr>
-                    <% end %>
+                  <%= render "modal_body_table_baner", order: order %> 
+                <% end %>
               </table>
             </div>
         </div>
@@ -297,44 +240,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 3. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+            <%= render "modal_header_table_baner" %>
 
             <% Order.joins(table_service_orders: :service).where("service_id = 28").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -350,44 +265,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 4. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+            <%= render "modal_header_table_baner" %>
 
             <% Order.joins(table_service_orders: :service).where("service_id = 29").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -403,44 +290,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 5. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+            <%= render "modal_header_table_baner" %>
 
             <% Order.joins(table_service_orders: :service).where("service_id = 30").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -456,43 +315,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 6. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+            <%= render "modal_header_table_baner" %>
 
             <% @banner6.each do |order| %>
-                <tr>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -508,44 +340,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 7. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+            <%= render "modal_header_table_baner" %>
 
             <% Order.joins(table_service_orders: :service).where("service_id = 32").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -561,44 +365,15 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 8. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
-
+            <%= render "modal_header_table_baner" %>
             <% Order.joins(table_service_orders: :service).where("service_id = 33").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+               <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -614,44 +389,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 9. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+            <%= render "modal_header_table_baner" %>
 
             <% Order.joins(table_service_orders: :service).where("service_id = 34").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>
@@ -667,44 +414,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 10. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-            <tr>
-              <td >
-                Название заказа
-              </td>
-              <td >
-                Дата заказа
-              </td>
-              <td>
-                Клиент
-              </td>
-              <td>
-                Дата начало показа
-              </td>
-              <td>
-                Дата конца показа
-              </td>
-            </tr>
+           <%= render "modal_header_table_baner" %>
 
             <% Order.joins(table_service_orders: :service).where("service_id = 25").each do |order| %>
-                <tr>
-                  <td  ><%= order.name %></td>
-                  <td><%= order.date_order%></td>
-                  <td><%= Client.find(order.client_id).name %></td>
-                  <% order.grafs .each do |graf|%>
-                      <td><%=graf.date_start %></td>
-                      <td><%=graf.date_end %></td>
-                  <% end %>
-                  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
-                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
-                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-                </tr>
+                <%= render "modal_body_table_baner", order: order %> 
             <% end %>
           </table>
         </div>

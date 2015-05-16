@@ -20,10 +20,15 @@
     <%= f.number_field :value %>
 
     <%= f.label :data_price, 'Дата'%><br>
-    <%= f.text_field :data_price, id:"datepicker" %>
+    <%= f.text_field :data_price, id:"datepicker_data_price" %>
 
     <%= f.submit "Добавить", class: "btn"%>
     <%= link_to 'Назад', prices_path , class: "btn"%>
 
 
 <% end %>
+<script>
+  $(function() {
+      $( "#datepicker_data_price" ).datepicker();
+  });
+</script>

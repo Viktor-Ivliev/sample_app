@@ -18,3 +18,7 @@
  *= require_self
  * require jquery.ui.datepicker
  */
+ 
+.modal.fade.bs-example-modal-lg{
+  display: none;
+}

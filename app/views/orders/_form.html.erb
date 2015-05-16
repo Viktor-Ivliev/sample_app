@@ -17,7 +17,7 @@
 
 
     <%= f.label :date_order, "Дата заказа" %><br>
-    <%= f.text_field :date_order, id:"datepicker"%>
+    <%= f.text_field :date_order, class: "datepicker_date"%>
 
 
     <%= f.label :client_id , "Клиента"%><br>
@@ -35,7 +35,6 @@
         <%= f.fields_for :grafs do |builder| %>
               <%= render "graf_fields", :f => builder %>
             <% end %>
-
         <p><%= link_to_add_fields "Добавить дату", f, :grafs %></p>
     <%= f.submit "Добавить", class: "btn"%>
     <%= link_to 'Назад',  orders_path, class: "btn" %>
@@ -47,5 +46,10 @@
                         prePopulate: $("#order_service_ids").data("pre"),
                         preventDuplicates: true
             });
+  });
+
+
+  $(function() {
+      $( ".datepicker_date" ).datepicker();
   });
 </script>
