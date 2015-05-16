@@ -13,12 +13,17 @@
 
   <div class="field">
     <%= f.label :order_id %><br>
-    <%= f.number_field :order_id %>
+    <%= f.collection_select(:order_id, @order_all, :id, :name, include_blank: 'Выберете заказ') %>
   </div>
   <div class="field">
     <%= f.label :date_status %><br>
-    <%= f.datetime_select :date_status %>
+    <%= f.text_field :date_status, class: "datepicker_date" %>
   </div>
+  Рапределение заданий
+    <%= f.fields_for :assignments do |builder| %>
+      <%= render "assignment_fields", :f => builder %>
+    <% end %>
+    <p><%= link_to_add_fields "Добавить задачу", f, :assignments %></p>
   <div class="field">
     <%= f.label :status %><br>
     <%= f.check_box :status %>
@@ -27,3 +32,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+$(function() {
+      $( ".datepicker_date" ).datepicker();
+  });
+</script>

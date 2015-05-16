@@ -1,3 +1,8 @@
+
+<%= @assignment.user.name %><br/>
+<%= @assignment.succinctly %><br/>
+<%= @assignment.description %><br/>
+
 <%= form_for(@assignment) do |f| %>
   <% if @assignment.errors.any? %>
     <div id="error_explanation">
@@ -10,22 +15,21 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :report %><br>
+    <%= f.text_area :report %>
   </div>
   <div class="field">
-    <%= f.label :Status_of_implementation_id %><br>
-    <%= f.number_field :Status_of_implementation_id %>
-  </div>
-  <div class="field">
-    <%= f.label :assignment_comment %><br>
-    <%= f.text_area :assignment_comment %>
+    <%= f.label :status %><br>
+    <%= f.select :status, %w[Создано Просмотрено Выполняется Завершено], {}, class: 'form-control'%>
   </div>
   <div class="field">
     <%= f.label :time_word %><br>
-    <%= f.number_field :time_word %>
+    <%= f.number_field :time_word, :step => 0.1 %>
+  </div>
+  <div class="field">
+    <%= f.label :runtime %><br>
+    <%= f.number_field :runtime, :step => 0.1 %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -2,22 +2,41 @@
 
 <p>
   <strong>User:</strong>
-  <%= @assignment.user_id %>
+  <%= @assignment.user.name %>
 </p>
 
 <p>
-  <strong>Status of implementation:</strong>
-  <%= @assignment.Status_of_implementation_id %>
+  <strong>Заказ:</strong>
+  <%= @assignment.status_of_implementation.order.name %>
 </p>
 
 <p>
-  <strong>Assignment comment:</strong>
-  <%= @assignment.assignment_comment %>
+  <strong>succinctly:</strong>
+  <%= @assignment.succinctly %>
+</p>
+
+<p>
+  <strong>description:</strong>
+  <%= @assignment.description %>
+</p>
+
+<p>
+  <strong>Assignment status</strong>
+  <%= @assignment.status  %>
 </p>
 
 <p>
   <strong>Time word:</strong>
   <%= @assignment.time_word %>
+</p>
+<p>
+<strong>Время выполнения:</strong>
+  <%= @assignment.runtime %>
+</p>
+
+<p>
+  <strong>Assignment comment:</strong>
+  <%= @assignment.report %>
 </p>
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |

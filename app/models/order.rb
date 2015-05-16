@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :client
+  has_one :status_of_implementation, dependent: :destroy
   has_many :grafs, dependent: :destroy
   has_many :table_service_orders, dependent: :destroy
   has_many :services, through: :table_service_orders

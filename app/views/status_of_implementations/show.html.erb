@@ -2,12 +2,28 @@
 
 <p>
   <strong>Order:</strong>
-  <%= @status_of_implementation.order_id %>
+  <%= @status_of_implementation.order.name %>
 </p>
-
+<!-- Тут скорее всего лучше сделать  -->
+<p>
+  <strong>Число до которого нужно сделать задания:</strong>
+  <%= @status_of_implementation.date_status %>
+</p>
 <p>
   <strong>Date status:</strong>
-  <%= @status_of_implementation.date_status %>
+    <% @status_of_implementation.assignments.each do |assignment| %>
+    <!-- тут сделаешь свои стили и тд, я просто показываю как обращатся к параметрам -->
+      <%= "Выполняет: #{assignment.user.name}" %></br>
+
+      <%= "Задание: #{assignment.succinctly}" %><br/>
+      <%= "Описание: #{assignment.description}" %><br/>
+
+      <%= "Время на задание: #{assignment.time_word}" %><br/>
+      <%= "Время выполнения: #{assignment.runtime ||= 0}" %><br/>
+      <%= "Статус выполнения: #{assignment.status}" %><br/>
+      <%= "Отчет: #{assignment.report}" if !assignment.report.blank?%><br/>
+      <hr/>
+    <% end %>
 </p>
 
 <p>

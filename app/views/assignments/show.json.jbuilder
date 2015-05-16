@@ -1,1 +1,1 @@
-json.extract! @assignment, :id, :user_id, :Status_of_implementation_id, :assignment_comment, :time_word, :created_at, :updated_at
+json.extract! @assignment, :id, :user_id, :status_of_implementation_id, :succinctly, :time_word, :runtime, :status, :created_at, :updated_at, :description, :report

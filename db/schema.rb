@@ -23,9 +23,13 @@ ActiveRecord::Schema.define(version: 20150516114236) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "Status_of_implementation_id"
-    t.text     "assignment_comment"
-    t.integer  "time_word"
+    t.integer  "status_of_implementation_id"
+    t.string   "succinctly"
+    t.text     "description"
+    t.text     "report"
+    t.float    "time_word"
+    t.string   "status"
+    t.float    "runtime"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

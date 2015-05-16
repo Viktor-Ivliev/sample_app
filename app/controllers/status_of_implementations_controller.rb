@@ -14,11 +14,16 @@ class StatusOfImplementationsController < ApplicationController
 
   # GET /status_of_implementations/new
   def new
+    @order_all = Order.all
+    @user_all = User.all
     @status_of_implementation = StatusOfImplementation.new
+    @status_of_implementation.assignments.build
   end
 
   # GET /status_of_implementations/1/edit
   def edit
+    @order_all = Order.all
+    @user_all = User.all
   end
 
   # POST /status_of_implementations
@@ -69,6 +74,19 @@ class StatusOfImplementationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_of_implementation_params
-      params.require(:status_of_implementation).permit(:order_id, :date_status, :status)
+      params.require(:status_of_implementation).permit(
+        :order_id, 
+        :date_status, 
+        :status, 
+        assignments_attributes: [ 
+          :id, 
+          :user_id,
+          :time_word, 
+          :status,
+          :succinctly,
+          :description,
+          "_destroy"
+        ]
+      )
     end
 end
