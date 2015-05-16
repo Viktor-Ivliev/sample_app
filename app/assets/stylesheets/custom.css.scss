@@ -493,11 +493,17 @@ img {
 }
 
 .zagolovki {
-  color: #B95649;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  background: rgba(171, 229, 190, 0.54);
+  color: rgba(37, 34, 33, 0.69);
   transition: all 1s;
 }
 .zagolovki:hover {
-  color: #5C8AA5;
+  color: #ff4b55;
 }
 .dropdown ul li a {
   background:#5C8AA5 ;

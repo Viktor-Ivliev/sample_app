@@ -11,21 +11,20 @@
     </div>
   <% end %>
 
-    <%= f.label :date_start %><br>
+    <%= f.label :date_start, "Дата начала показа"%><br>
     <%= f.text_field :date_start, class: "datepicker_data" %>
 
-    <%= f.label :date_end %><br>
+    <%= f.label :date_end ,"Дата окончание показа"%><br>
     <%= f.text_field :date_end, class: "datepicker_data" %>
 
-    <%= f.label :order_id %><br>
+    <%= f.label :order_id, "Заказ" %><br>
     <%= f.collection_select(:order_id, @order_all, :id, :name) %>
 
     <%= f.submit %>
 
 <% end %>
-
 <script>
-  $(function() {
-      $( ".datepicker_data" ).datepicker();
-  });
+      $(function() {
+              $( ".datepicker_data" ).datepicker();
+          });
 </script>

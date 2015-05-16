@@ -151,37 +151,37 @@
 <!-- тут для каждого твоего банера свое модальное окно -->
 <!-- Button trigger modal -->
 <script type="text/javascript">
-      $('.modal.fade.bs-example-modal-lg').modal('hide');
-      $( ".banner01" ).click(function() {
-            $('#myModal1').modal();
-          });
-      $( ".banner02" ).click(function() {
-            $('#myModal2').modal();
-          });
-      $( ".banner03" ).click(function() {
-          $('#myModal3').modal();
-      });
-      $( ".banner04" ).click(function() {
-          $('#myModal4').modal();
-      });
-      $( ".banner05" ).click(function() {
-          $('#myModal5').modal();
-      });
-      $( ".banner06" ).click(function() {
-          $('#myModal6').modal();
-      });
-      $( ".banner07" ).click(function() {
-          $('#myModal7').modal();
-      });
-      $( ".banner08" ).click(function() {
-          $('#myModal8').modal();
-      });
-      $( ".banner09" ).click(function() {
-          $('#myModal9').modal();
-      });
-      $( ".banner10" ).click(function() {
-          $('#myModal10').modal();
-      });
+    $('.modal.fade.bs-example-modal-lg').modal('hide');
+    $( ".banner01" ).click(function() {
+        $('#myModal1').modal();
+    });
+    $( ".banner02" ).click(function() {
+        $('#myModal2').modal();
+    });
+    $( ".banner03" ).click(function() {
+        $('#myModal3').modal();
+    });
+    $( ".banner04" ).click(function() {
+        $('#myModal4').modal();
+    });
+    $( ".banner05" ).click(function() {
+        $('#myModal5').modal();
+    });
+    $( ".banner06" ).click(function() {
+        $('#myModal6').modal();
+    });
+    $( ".banner07" ).click(function() {
+        $('#myModal7').modal();
+    });
+    $( ".banner08" ).click(function() {
+        $('#myModal8').modal();
+    });
+    $( ".banner09" ).click(function() {
+        $('#myModal9').modal();
+    });
+    $( ".banner10" ).click(function() {
+        $('#myModal10').modal();
+    });
     </script>
 
 <!-- Modal -->
@@ -198,8 +198,8 @@
               <table >
                 <%= render "modal_header_table_baner" %>
                 <% Order.joins(table_service_orders: :service).where("service_id = 26").each do |order| %>
-                  <%= render "modal_body_table_baner", order: order %> 
-                <% end %>
+                    <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
               </table>
             </div>
         </div>
@@ -215,6 +215,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">Банер 2. Список заказов.</h4>
         </div>
         <div class="modal-body">
@@ -222,10 +223,9 @@
             <div class="ClientsCss" >
               <table >
                 <%= render "modal_header_table_baner" %>
-
                 <% Order.joins(table_service_orders: :service).where("service_id = 27").each do |order| %>
-                  <%= render "modal_body_table_baner", order: order %> 
-                <% end %>
+                    <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
               </table>
             </div>
         </div>
@@ -240,6 +240,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 3. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -247,9 +248,8 @@
         <div class="ClientsCss" >
           <table >
             <%= render "modal_header_table_baner" %>
-
             <% Order.joins(table_service_orders: :service).where("service_id = 28").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -265,6 +265,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 4. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -272,9 +273,8 @@
         <div class="ClientsCss" >
           <table >
             <%= render "modal_header_table_baner" %>
-
             <% Order.joins(table_service_orders: :service).where("service_id = 29").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -290,6 +290,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 5. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -297,9 +298,8 @@
         <div class="ClientsCss" >
           <table >
             <%= render "modal_header_table_baner" %>
-
             <% Order.joins(table_service_orders: :service).where("service_id = 30").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -315,6 +315,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 6. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -322,9 +323,8 @@
         <div class="ClientsCss" >
           <table >
             <%= render "modal_header_table_baner" %>
-
             <% @banner6.each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -340,6 +340,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 7. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -347,9 +348,8 @@
         <div class="ClientsCss" >
           <table >
             <%= render "modal_header_table_baner" %>
-
             <% Order.joins(table_service_orders: :service).where("service_id = 32").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -365,6 +365,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 8. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -373,7 +374,7 @@
           <table >
             <%= render "modal_header_table_baner" %>
             <% Order.joins(table_service_orders: :service).where("service_id = 33").each do |order| %>
-               <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -389,6 +390,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 9. Список заказов.</h4>
       </div>
       <div class="modal-body">
@@ -396,9 +398,8 @@
         <div class="ClientsCss" >
           <table >
             <%= render "modal_header_table_baner" %>
-
             <% Order.joins(table_service_orders: :service).where("service_id = 34").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>
@@ -414,16 +415,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Банер 10. Список заказов.</h4>
       </div>
       <div class="modal-body">
         <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
         <div class="ClientsCss" >
           <table >
-           <%= render "modal_header_table_baner" %>
-
+            <%= render "modal_header_table_baner" %>
             <% Order.joins(table_service_orders: :service).where("service_id = 25").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %> 
+                <%= render "modal_body_table_baner", order: order %>
             <% end %>
           </table>
         </div>

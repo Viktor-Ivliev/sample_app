@@ -2,11 +2,11 @@
   <td  ><%= order.name %></td>
   <td><%= order.date_order%></td>
   <td><%= Client.find(order.client_id).name %></td>
-     <% order.grafs .each do |graf|%>
-         <td><%=graf.date_start %></td>
-         <td><%=graf.date_end %></td>
-     <% end %>
-     <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
+  <% order.grafs .each do |graf|%>
+              <td><%=graf.date_start %></td>
+              <td><%=graf.date_end %></td>
+          <% end %>
+  <td class="btn-see"><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
   <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>
   <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), order, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
-</tr>
+  </tr>

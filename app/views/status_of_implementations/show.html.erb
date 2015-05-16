@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @status_of_implementation.order_id %>
+</p>
+
+<p>
+  <strong>Date status:</strong>
+  <%= @status_of_implementation.date_status %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @status_of_implementation.status %>
+</p>
+
+<%= link_to 'Edit', edit_status_of_implementation_path(@status_of_implementation) %> |
+<%= link_to 'Back', status_of_implementations_path %>
