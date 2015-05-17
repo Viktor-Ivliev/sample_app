@@ -1,7 +1,6 @@
 <% provide(:title, 'Все заказы') %>
 <p id="notice"><%= notice %></p>
 <h1 class="zagolovki">Все заказы</h1>
-<%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
 <div class="ClientsCss" >
   <table >
     <tr>
@@ -40,5 +39,5 @@
     <% end %>
   </table>
 </div>
-
+<%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
 <br>

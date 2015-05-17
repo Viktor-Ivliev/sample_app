@@ -1,31 +1,32 @@
+<% provide(:title, 'Все задачи') %>
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Status Of Implementations</h1>
-
-<table>
-  <thead>
+<h1 class="zagolovki">Список задач сотрудникам</h1>
+<div class="ClientsCss" >
+  <table>
     <tr>
-      <th>Order</th>
-      <th>Date status</th>
-      <th>Status</th>
-      <th colspan="3"></th>
+      <td >
+        Заказ
+      </td>
+      <td >
+        Дата до которой нужно сделать задачу
+      </td>
+      <td>
+        Статус выполнения
+      </td>
     </tr>
-  </thead>
-
-  <tbody>
     <% @status_of_implementations.each do |status_of_implementation| %>
-      <tr>
-        <td><%= status_of_implementation.order_id %></td>
-        <td><%= status_of_implementation.date_status %></td>
-        <td><%= status_of_implementation.status %></td>
-        <td><%= link_to 'Show', status_of_implementation %></td>
-        <td><%= link_to 'Edit', edit_status_of_implementation_path(status_of_implementation) %></td>
-        <td><%= link_to 'Destroy', status_of_implementation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+          <td><%= status_of_implementation.order.name %></td>
+          <td><%= status_of_implementation.date_status.to_date %></td>
+          <td><%=  status_of_implementation.status  %></td>
+          <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"), status_of_implementation , class:"btn-see"%></td>
+          <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_status_of_implementation_path(status_of_implementation), class:"btn-see" %></td>
+          <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),status_of_implementation, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
-
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Status of implementation', new_status_of_implementation_path %>
+<%= link_to 'Новая задача', new_status_of_implementation_path , class: "btn btn-large btn-primary" %>
+

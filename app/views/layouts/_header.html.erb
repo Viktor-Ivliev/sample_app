@@ -11,9 +11,10 @@
           <%end%>
           <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/613/w256h2561390849392combo256.png", alt: 'Анализ', title:"Анализ"),    "#" %></li>
           <li><%= link_to image_tag("http://www.mba4managers.com/images/courses_logo/project.png", alt: 'Клиент', title:"Клиенты"), clients_path %></li>
-          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/607/w512h5121390848328appointmentreminders512.png", alt: 'состояние выполнение', title:"Состояние выполнения"),  "#" %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/607/w512h5121390848328appointmentreminders512.png", alt: 'задачи сотрудника', title:"Задачи сотрудника"),  assignments_path %></li>
           <li><%= link_to image_tag("http://static1.squarespace.com/static/549376b0e4b01103e293ff59/5493aba4e4b057032fa7f6b3/5493abb3e4b057032fa7f6da/1423527305429/?format=1000w", alt: 'Деятельность сотрудника', title:"Деятельность сотрудников"),  "#" %></li>
           <li><%= link_to image_tag("http://www.kananholiday.com/img/agent.png", alt: 'Сотрудники', title:"Сотрудники"),  users_path %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w512h4641380476740clip.png", alt: 'Распределение работ', title:"Распределение работ"),  status_of_implementations_path %></li>
           <li id="fat-menu" class="dropdown">
 
             <a href="#"  class="dropdown-toggle" data-toggle="dropdown">
@@ -32,6 +33,7 @@
           <li><%= link_to image_tag("logo.png", alt: 'Лого', title:"Главная"), root_path , id: "logo" %></li>
           <li  ><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h5121380476868key.png", alt: 'Войти'), signin_path %></li>
       <% end %>
+      <li><%= link_to image_tag("http://iconspot.ru/files/183525.png", alt: 'О программе', title:"О программе"),about_path  %></li>
     </ul>
   </div>
   <div class="main-content">

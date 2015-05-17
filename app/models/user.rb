@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :services
+  has_many :assignments, dependent: :destroy
+  has_many :services, dependent: :destroy
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i

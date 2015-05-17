@@ -1,35 +1,32 @@
-<p id="notice"><%= notice %></p>
-
+<% provide(:title, 'Отчет от выполненой работе') %>
+<h1 class="zagolovki" >Отчет от выполненой работе</h1>
 <p>
-  <strong>Order:</strong>
+  <strong>Заказ:</strong>
   <%= @status_of_implementation.order.name %>
 </p>
-<!-- Тут скорее всего лучше сделать  -->
+
 <p>
   <strong>Число до которого нужно сделать задания:</strong>
-  <%= @status_of_implementation.date_status %>
+  <%= @status_of_implementation.date_status.to_date %>
+</p>
+   <strong>Действие сотрудников:</strong><br/>
+     <% @status_of_implementation.assignments.each do |assignment| %>
+    <div class="ohyenchik"><div class="ohyenchik3"><%= "Выполняет: #{assignment.user.name}" %></br></div>
+       <%= "Задание: #{assignment.succinctly}" %><br/>
+            <%= "Описание: #{assignment.description}" %><br/>
+            <%= "Время на задание: #{assignment.time_word}" %><br/></div>
+           <hr class="hr">
+    <div class="ohyenchik2"><%= "Статус выполнения: #{assignment.status}" %><br/>
+            <%= "Время выполнения: #{assignment.runtime ||= 0}" %><br/>
+            <%= "Отчет от сотрудника: #{assignment.report}" if !assignment.report.blank?%><br/>
+    </div>
+           <hr class="hr">
+          <% end %>
 </p>
 <p>
-  <strong>Date status:</strong>
-    <% @status_of_implementation.assignments.each do |assignment| %>
-    <!-- тут сделаешь свои стили и тд, я просто показываю как обращатся к параметрам -->
-      <%= "Выполняет: #{assignment.user.name}" %></br>
-
-      <%= "Задание: #{assignment.succinctly}" %><br/>
-      <%= "Описание: #{assignment.description}" %><br/>
-
-      <%= "Время на задание: #{assignment.time_word}" %><br/>
-      <%= "Время выполнения: #{assignment.runtime ||= 0}" %><br/>
-      <%= "Статус выполнения: #{assignment.status}" %><br/>
-      <%= "Отчет: #{assignment.report}" if !assignment.report.blank?%><br/>
-      <hr/>
-    <% end %>
-</p>
-
-<p>
-  <strong>Status:</strong>
+  <strong>Статус выполнения задачи:</strong>
   <%= @status_of_implementation.status %>
 </p>
 
-<%= link_to 'Edit', edit_status_of_implementation_path(@status_of_implementation) %> |
-<%= link_to 'Back', status_of_implementations_path %>
+<%= link_to 'Редактировать', edit_status_of_implementation_path(@status_of_implementation), class:"btn" %> |
+<%= link_to 'Назад', status_of_implementations_path, class:"btn" %>

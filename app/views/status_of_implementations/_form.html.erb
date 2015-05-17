@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :order_id %><br>
+
+
+
+    <%= f.label :order_id , "Заказ" %><br>
     <%= f.collection_select(:order_id, @order_all, :id, :name, include_blank: 'Выберете заказ') %>
-  </div>
-  <div class="field">
-    <%= f.label :date_status %><br>
+
+
+    <%= f.label :date_status, "Дата до завершения задачи" %><br>
     <%= f.text_field :date_status, class: "datepicker_date" %>
-  </div>
-  Рапределение заданий
+
+    <p class="razpred">Рапределение заданий</p>
     <%= f.fields_for :assignments do |builder| %>
-      <%= render "assignment_fields", :f => builder %>
-    <% end %>
+        <%= render "assignment_fields", :f => builder %>
+        <% end %>
     <p><%= link_to_add_fields "Добавить задачу", f, :assignments %></p>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+    <p class="tanya"><%= f.check_box :status %>
+    <%= f.label :status, "Выполнено" %><br></p>
+
+    <%= f.submit "Добавить", class: "btn"%>
+    <%= link_to 'Назад', status_of_implementations_path, class: "btn" %>
 <% end %>
-
-
 <script type="text/javascript">
-$(function() {
-      $( ".datepicker_date" ).datepicker();
-  });
+    $(function() {
+              $( ".datepicker_date" ).datepicker();
+          });
 </script>
