@@ -1,11 +1,15 @@
-<%= @assignment.user.name %><br/>
-<%= @assignment.succinctly %><br/>
-<%= @assignment.description %><br/>
+<div class="ohyenchik4">
+  <div>Задание</div>
+  <hr >
+<p>Сотрудник: <%= @assignment.user.name %><br/>
+<p>Краткое описание: <%= @assignment.succinctly %><br/>
+<p>Полное описание: <%= @assignment.description %><br/>
+</div>
 
 <%= form_for(@assignment) do |f| %>
   <% if @assignment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+      <h2><%= pluralize(@assignment.errors.count, "error") %> Заполните соответвующие поля:</h2>
 
       <ul>
       <% @assignment.errors.full_messages.each do |message| %>
@@ -15,23 +19,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :report %><br>
+
+    <%= f.label :report, "Описание выполнения" %><br>
     <%= f.text_area :report %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
+
+    <%= f.label :status,"Статус выполнения"%><br>
     <%= f.select :status, %w[Создано Просмотрено Выполняется Завершено], {}, class: 'form-control'%>
-  </div>
-  <div class="field">
-    <%= f.label :time_word %><br>
+
+    <%= f.label :time_word, "Время на все задание" %><br>
     <%= f.number_field :time_word, :step => 0.1 %>
-  </div>
-  <div class="field">
-    <%= f.label :runtime %><br>
+
+    <%= f.label :runtime, "Время выполнения"%><br>
     <%= f.number_field :runtime, :step => 0.1 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <%= f.submit "Добавить", class:"btn" %>
+    <%= link_to 'Назад', assignments_path , class:"btn" %>
 <% end %>

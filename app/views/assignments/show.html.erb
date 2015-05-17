@@ -1,32 +1,38 @@
+<% provide(:title,  'Просмотр задания') %>
 <p id="notice"><%= notice %></p>
+<h1 class="zagolovki">Просмотр задания</h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @assignment.user.name %>
-</p>
 
+<div class="ohyenchik6">
+  <div class="ohyenchik5">
+    <p>
+      <strong>Сотрудник:</strong>
+      <%= @assignment.user.name %>
+    </p>
+  </div>
+  <hr>
 <p>
   <strong>Заказ:</strong>
   <%= @assignment.status_of_implementation.order.name %>
 </p>
 
 <p>
-  <strong>succinctly:</strong>
+  <strong>Краткое описание задачи:</strong>
     <%= @assignment.succinctly %>
   </p>
 
 <p>
-    <strong>description:</strong>
+    <strong>Полное описание задачи:</strong>
     <%= @assignment.description %>
   </p>
 
 <p>
-    <strong>Assignment status</strong>
+    <strong>Статус выполнения:</strong>
     <%= @assignment.status  %>
 </p>
 
 <p>
-  <strong>Time word:</strong>
+  <strong>Время на всю задачу:</strong>
   <%= @assignment.time_word %>
 </p>
 <p>
@@ -34,9 +40,9 @@
     <%= @assignment.runtime %>
 </p>
 <p>
-  <strong>Assignment comment:</strong>
+  <strong>Описание выполнения:</strong>
   <%= @assignment.report %>
 </p>
-
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+</div>
+<%= link_to 'Изменить', edit_assignment_path(@assignment), class:"btn" %> |
+<%= link_to 'Назад', assignments_path, class:"btn"%>

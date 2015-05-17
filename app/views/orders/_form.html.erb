@@ -33,9 +33,10 @@
     <%= f.label :price, "Цена заказа: " %><span id="price_span"> </span></br>
     <%= f.hidden_field :price %>
 
-    <%= f.label :info, "Дополнительная информация" %></br>
+    <%= f.label :info, "Дополнительная информация" %><br>
     <%= f.text_field :info %>
-    Даты показа для категрий: Новости, главная и тд..
+    <p class="razpred"> Даты показа для категорий: Новости, Главная, "Остальные разделы" <p>
+
         <%= f.fields_for :grafs do |builder| %>
               <%= render "graf_fields", :f => builder %>
             <% end %>
@@ -45,35 +46,32 @@
     <%= link_to 'Назад',  orders_path, class: "btn" %>
 <% end %>
 <script type="text/javascript">
-$(document).ready(function() {
-  $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
-      crossDomain: false,
-      prePopulate: $("#order_service_ids").data("pre"),
-      preventDuplicates: true
-  });
-});
-
-
-$(function() {
-    $( ".datepicker_date" ).datepicker();
-
-});
-
-
-$(function() {
-  return $("body").on("change", "#order_service_ids", function() {
-    return $.ajax({
-      type: "POST",
-      url: "get_price.json",
-      data: {
-        services: $("#order_service_ids").val()
-      },
-      success: function(data) {
-        $("#price_span").text(data["price"]);
-        
-        return $("#order_price").val(data["price"]);
-      }
+    $(document).ready(function() {
+        $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
+            crossDomain: false,
+            prePopulate: $("#order_service_ids").data("pre"),
+            preventDuplicates: true
+        });
     });
+
+
+$(function() {
   });
+    $(function() {
+        $( ".datepicker_date" ).datepicker();
+        return $("body").on("change", "#order_service_ids", function() {
+            return $.ajax({
+                type: "POST",
+                url: "get_price.json",
+                data: {
+                    services: $("#order_service_ids").val()
+                },
+                success: function(data) {
+                    $("#price_span").text(data["price"]);
+
+                    return $("#order_price").val(data["price"]);
+                }
+            });
+        });
 });
 </script>

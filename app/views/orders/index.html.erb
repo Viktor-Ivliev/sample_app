@@ -23,8 +23,6 @@
         Дополнительная информация
       </td>
     </tr>
-
-
     <% @orders.each do |order| %>
         <tr>
           <td  ><%= order.name %></td>
@@ -35,6 +33,7 @@
        	<span>
  		<%= service.name %></span><br/>
           <% end %></td>
+
           <td><%= order.info %></td>
           <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),order, class:"btn-see"%></td>
           <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_order_path(order), class:"btn-see" %></td>

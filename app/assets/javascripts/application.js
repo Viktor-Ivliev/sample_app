@@ -15,6 +15,8 @@
 //= require jquery.tokeninput
 //= require bootstrap
 //= require jquery-ui.js
+//= require raphael
+//= require morris
 // require jquery-1.10.2
 // require jquery.ui.datepicker
 // require turbolinks

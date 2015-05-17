@@ -28,7 +28,7 @@ class CategorisController < ApplicationController
 
     respond_to do |format|
       if @categori.save
-        format.html { redirect_to @categori, notice: 'Categori was successfully created.' }
+        format.html { redirect_to @categori, notice: 'Добавлено успешно.' }
         format.json { render :show, status: :created, location: @categori }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CategorisController < ApplicationController
   def update
     respond_to do |format|
       if @categori.update(categori_params)
-        format.html { redirect_to @categori, notice: 'Categori was successfully updated.' }
+        format.html { redirect_to @categori, notice: 'Обновлено успешно.' }
         format.json { render :show, status: :ok, location: @categori }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CategorisController < ApplicationController
   def destroy
     @categori.destroy
     respond_to do |format|
-      format.html { redirect_to categoris_url, notice: 'Categori was successfully destroyed.' }
+      format.html { redirect_to categoris_url, notice: 'Удалено успешно.' }
       format.json { head :no_content }
     end
   end

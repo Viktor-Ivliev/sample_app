@@ -1,29 +1,31 @@
+<% provide(:title,  'Ваши задачи') %>
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Assignments</h1>
-
-<table>
-  <thead>
+<h1 class="zagolovki">список ваших задач</h1>
+<div class="ClientsCss" >
+  <table>
     <tr>
-      <th>User</th>
-      <th>краткое описание задачи</th>
-      <th>status</th>
-      <th>Time word</th>
-      <th colspan="3"></th>
+      <td >
+        Сотрудник
+      </td>
+      <td >
+        Краткое описание задачи
+      </td>
+      <td>
+        Статус выполнения
+      </td>
+      <td>
+        Время на выполнения
+      </td>
     </tr>
-  </thead>
-
-  <tbody>
     <% @assignments.each do |assignment| %>
-      <tr>
-        <td><%= assignment.user.name %></td>
-        <td><%= assignment.succinctly %></td>
-        <td><%= assignment.status %></td>
-        <td><%= assignment.time_word %></td>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-      </tr>
+        <tr>
+          <td><%= assignment.user.name %></td>
+          <td><%= assignment.succinctly %></td>
+          <td><%= assignment.status %></td>
+          <td><%= assignment.time_word %></td>
+          <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),  assignment, class:"btn-see"%></td>
+          <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_assignment_path(assignment), class:"btn-see" %></td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
-<br>
+  </table>
+</div>

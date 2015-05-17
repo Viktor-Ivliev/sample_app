@@ -71,33 +71,34 @@ class OrdersController < ApplicationController
   end
 
   def get_price
-    sum = 0
-    unless params[:services].blank?
-      service_ids = params[:services].split(',').uniq.map(&:to_i)
-      services = Service.where(id: service_ids)
-      services.each do |service|
-        price = service.prices.where("data_price < '#{Date.current}'").first
-        sum += price.value
-      end
-    end
-    render :json => {
-      :price => sum
-    }
+        sum = 0
+        unless params[:services].blank?
+                 service_ids = params[:services].split(',').uniq.map(&:to_i)
+                 services = Service.where(id: service_ids)
+                 services.each do |service|
+                   price = service.prices.where("data_price < '#{Date.current}'").first
+                   sum += price.value
+                 end
+        end
+      render :json => {
+            :price => sum
+      }
   end
+
 
   private
   def add_service(order, service_ids)
        unless service_ids.blank?
-          service_ids = service_ids.split(',').uniq.map(&:to_i)
-          all_services = order.services.pluck(:id)
-          (service_ids - all_services).each do |id|
-            unless order.services.where("services.id = ?", id).present?
-              table_service_order = TableServiceOrder.create(service_id: id, order_id: order.id)
+         service_ids = service_ids.split(',').uniq.map(&:to_i)
+         all_services = order.services.pluck(:id)
+         (service_ids - all_services).each do |id|
+           unless order.services.where("services.id = ?", id).present?
+             table_service_order = TableServiceOrder.create(service_id: id, order_id: order.id)
            end
-          end
-          TableServiceOrder.where(service_id: (all_services - service_ids)).where(order_id: order.id).destroy_all
-        end
-      end
+         end
+         TableServiceOrder.where(service_id: (all_services - service_ids)).where(order_id: order.id).destroy_all
+       end
+       end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])

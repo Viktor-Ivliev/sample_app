@@ -33,7 +33,7 @@ class StatusOfImplementationsController < ApplicationController
 
     respond_to do |format|
       if @status_of_implementation.save
-        format.html { redirect_to @status_of_implementation, notice: 'Status of implementation was successfully created.' }
+        format.html { redirect_to @status_of_implementation, notice: 'Добавлено успешно.' }
         format.json { render :show, status: :created, location: @status_of_implementation }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class StatusOfImplementationsController < ApplicationController
   def update
     respond_to do |format|
       if @status_of_implementation.update(status_of_implementation_params)
-        format.html { redirect_to @status_of_implementation, notice: 'Status of implementation was successfully updated.' }
+        format.html { redirect_to @status_of_implementation, notice: 'Обновлено успешно.' }
         format.json { render :show, status: :ok, location: @status_of_implementation }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class StatusOfImplementationsController < ApplicationController
   def destroy
     @status_of_implementation.destroy
     respond_to do |format|
-      format.html { redirect_to status_of_implementations_url, notice: 'Status of implementation was successfully destroyed.' }
+      format.html { redirect_to status_of_implementations_url, notice: 'Удалено успешно.' }
       format.json { head :no_content }
     end
   end

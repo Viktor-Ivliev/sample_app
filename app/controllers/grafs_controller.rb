@@ -30,7 +30,7 @@ class GrafsController < ApplicationController
 
     respond_to do |format|
       if @graf.save
-        format.html { redirect_to @graf, notice: 'Graf was successfully created.' }
+        format.html { redirect_to @graf, notice: 'Добавлено успешно.' }
         format.json { render :show, status: :created, location: @graf }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class GrafsController < ApplicationController
   def update
     respond_to do |format|
       if @graf.update(graf_params)
-        format.html { redirect_to @graf, notice: 'Graf was successfully updated.' }
+        format.html { redirect_to @graf, notice: 'Обновлено успешно.' }
         format.json { render :show, status: :ok, location: @graf }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class GrafsController < ApplicationController
   def destroy
     @graf.destroy
     respond_to do |format|
-      format.html { redirect_to grafs_url, notice: 'Graf was successfully destroyed.' }
+      format.html { redirect_to grafs_url, notice: 'Удалено успешно.' }
       format.json { head :no_content }
     end
   end

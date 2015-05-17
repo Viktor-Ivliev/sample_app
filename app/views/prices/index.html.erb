@@ -2,6 +2,9 @@
 <p id="notice"><%= notice %></p>
 <h1 class="zagolovki">Список цена на услуги</h1>
 <div class="ClientsCss" >
+
+
+
 <table>
   <tr>
     <td >
@@ -14,6 +17,8 @@
       Дата
     </td>
   </tr>
+
+
     <% @prices.each do |price| %>
       <tr>
         <td><%= Service.find(price.service_id).name %></td>
@@ -29,3 +34,5 @@
 
 
 <%= link_to 'Новая цена', new_price_path, class: "btn btn-large btn-primary" %>
+
+

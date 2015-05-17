@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     respond_to do |format|
       if @service.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.html { redirect_to @service, notice: 'Добавлено успешно.' }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to @service, notice: 'Обновлено успешно.' }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -61,28 +61,28 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
     respond_to do |format|
-      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.html { redirect_to services_url, notice: 'Удалено успешно.' }
       format.json { head :no_content }
     end
   end
 
   def get_services_grup
-        # если пожелаешь избавится от того что бы в заказе сервисы сортировались при вводе названия то уберешь
-        #  where("services.name like ?", "%%#{params[:q]}%"),  в двух ниже запросах
+    # если пожелаешь избавится от того что бы в заказе сервисы сортировались при вводе названия то уберешь
+    #  where("services.name like ?", "%%#{params[:q]}%"),  в двух ниже запросах
         @services = if params[:region].blank?
-                  Service.joins(:prices).
-                  where("prices.value is not null").
-                  where("prices.data_price < '#{Date.current}'").
-                  where("services.name like ?", "%%#{params[:q]}%").
-                  distinct
+                      Service.joins(:prices).
+                          where("prices.value is not null").
+                          where("prices.data_price < '#{Date.current}'").
+                          where("services.name like ?", "%%#{params[:q]}%").
+                          distinct
                 else
                   Service.joins(:prices).
-                  where("prices.value is not null").
-                  where("prices.data_price < '#{Date.current}'").
-                  where("services.categori_id = ?", params[:region]).
-                  where("services.name like ?", "%%#{params[:q]}%").
-                  distinct
-                end
+                      where("prices.value is not null").
+                      where("prices.data_price < '#{Date.current}'").
+                      where("services.categori_id = ?", params[:region]).
+                      where("services.name like ?", "%%#{params[:q]}%").
+                      distinct
+                   end
         respond_to do |format|
           format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }
         end

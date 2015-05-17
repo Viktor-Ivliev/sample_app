@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   resources :assignments
-
   resources :status_of_implementations
-
   resources :activities
-
   resources :k_indactivities
   resources :grafs
   resources :orders

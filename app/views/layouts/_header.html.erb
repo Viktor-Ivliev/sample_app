@@ -7,9 +7,9 @@
           <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/587/w512h5121390727217purchaseorder512.png", alt: 'Заказы', title:"Заказы"),orders_path %></li>
           <% if current_user.admin?  %>
               <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390857141pricetag512.png", alt: 'Цены на услуги', title:"Цены на услуги"),     prices_path %></li>
-              <li><%= link_to image_tag("http://vsedoci.net/wp-content/uploads/2014/11/w256h2561390856940checkout256.png", alt: 'Услуги', title:"Услуги"),   services_path %></li>
+              <li><%= link_to image_tag("http://library.duke.edu/data/sites/default/files/datagis/users/angela.zoss/iconmonstr-database-10-icon-01.png", alt: 'Услуги', title:"Услуги"),   services_path %></li>
           <%end%>
-          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/613/w256h2561390849392combo256.png", alt: 'Анализ', title:"Анализ"),    "#" %></li>
+          <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/613/w256h2561390849392combo256.png", alt: 'Анализ', title:"Анализ"),    help_path %></li>
           <li><%= link_to image_tag("http://www.mba4managers.com/images/courses_logo/project.png", alt: 'Клиент', title:"Клиенты"), clients_path %></li>
           <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/607/w512h5121390848328appointmentreminders512.png", alt: 'задачи сотрудника', title:"Задачи сотрудника"),  assignments_path %></li>
           <li><%= link_to image_tag("http://static1.squarespace.com/static/549376b0e4b01103e293ff59/5493aba4e4b057032fa7f6b3/5493abb3e4b057032fa7f6da/1423527305429/?format=1000w", alt: 'Деятельность сотрудника', title:"Деятельность сотрудников"),  "#" %></li>
@@ -33,7 +33,7 @@
           <li><%= link_to image_tag("logo.png", alt: 'Лого', title:"Главная"), root_path , id: "logo" %></li>
           <li  ><%= link_to image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h5121380476868key.png", alt: 'Войти'), signin_path %></li>
       <% end %>
-      <li><%= link_to image_tag("http://iconspot.ru/files/183525.png", alt: 'О программе', title:"О программе"),about_path  %></li>
+      <li><%= link_to image_tag("http://mestosveta.ru/wp-content/img/up.png", alt: 'О программе', title:"О программе"),about_path  %></li>
     </ul>
   </div>
   <div class="main-content">
