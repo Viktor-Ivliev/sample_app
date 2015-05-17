@@ -13,6 +13,9 @@
       <td>
         Клиент
       </td>
+      <td>
+        Цена
+      </td>
      <td >
        Услуги
       </td>
@@ -27,6 +30,7 @@
           <td  ><%= order.name %></td>
           <td><%= order.date_order %></td>
           <td><%= Client.find(order.client_id).name %></td>
+          <td><%= order.price %></td>
           <td> <% order.services.each do |service| %>
        	<span>
  		<%= service.name %></span><br/>

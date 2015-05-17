@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :k_indactivities
   resources :grafs
   resources :orders
+  post 'orders/get_price', :to => 'orders#get_price'
   resources :categoris
   resources :blocks
   resources :services do

@@ -25,9 +25,6 @@
     <%= f.label :categori_id, "Категория услуги"%><br>
     <%= f.collection_select(:categori_id, @categori_all, :id, :name) %>
 
-    <%= f.label :discount, "Скидка" %><br>
-    <%= f.number_field :discount %>
-
     <%= f.submit "Добавить", class: "btn" %>
     <%= link_to 'Назад', services_path, class: "btn" %>
 

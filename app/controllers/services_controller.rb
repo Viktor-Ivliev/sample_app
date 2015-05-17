@@ -67,10 +67,21 @@ class ServicesController < ApplicationController
   end
 
   def get_services_grup
+        # если пожелаешь избавится от того что бы в заказе сервисы сортировались при вводе названия то уберешь
+        #  where("services.name like ?", "%%#{params[:q]}%"),  в двух ниже запросах
         @services = if params[:region].blank?
-                  Service.where("name like ?", "%%#{params[:q]}%")
+                  Service.joins(:prices).
+                  where("prices.value is not null").
+                  where("prices.data_price < '#{Date.current}'").
+                  where("services.name like ?", "%%#{params[:q]}%").
+                  distinct
                 else
-                  Service.where("categori_id = ?", params[:region]).where("name like ?", "%%#{params[:q]}%")
+                  Service.joins(:prices).
+                  where("prices.value is not null").
+                  where("prices.data_price < '#{Date.current}'").
+                  where("services.categori_id = ?", params[:region]).
+                  where("services.name like ?", "%%#{params[:q]}%").
+                  distinct
                 end
         respond_to do |format|
           format.json { render json: @services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } } }

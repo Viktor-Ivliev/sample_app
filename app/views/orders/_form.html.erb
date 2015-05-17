@@ -24,32 +24,56 @@
     <%= f.collection_select(:client_id, @client_all, :id, :name ) %>
 
     <%= label :categori_id, "Категория услуги"%><br>
-    <%= collection_select(nil ,:categori_id, @categori_all, :id, :name, include_blank: 'all') %>
+    <%= collection_select(nil ,:categori_id, @categori_all, :id, :name, include_blank: 'Все') %>
 
     <%= f.label :service_id, "Услуги"%><br>
-    <%= f.text_field :service_ids, 'data-pre' => @order.services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } }.to_json %>
+    <%= f.text_field :service_ids, 'data-pre' => @order.services.map{|t| {id: t.id, name: "#{t.name} (#{t.categori.name})" } }.to_json, class: 'form-control' %>
+    </br></br>
 
-    <%= f.label :info, "Дополнительная информация" %><br>
+    <%= f.label :price, "Цена заказа: " %><span id="price_span"> </span></br>
+    <%= f.hidden_field :price %>
+
+    <%= f.label :info, "Дополнительная информация" %></br>
     <%= f.text_field :info %>
-    Даты показа
+    Даты показа для категрий: Новости, главная и тд..
         <%= f.fields_for :grafs do |builder| %>
               <%= render "graf_fields", :f => builder %>
             <% end %>
         <p><%= link_to_add_fields "Добавить дату", f, :grafs %></p>
+
     <%= f.submit "Добавить", class: "btn"%>
     <%= link_to 'Назад',  orders_path, class: "btn" %>
 <% end %>
 <script type="text/javascript">
-      $(document).ready(function() {
-            $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
-                crossDomain: false,
-                        prePopulate: $("#order_service_ids").data("pre"),
-                        preventDuplicates: true
-            });
+$(document).ready(function() {
+  $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
+      crossDomain: false,
+      prePopulate: $("#order_service_ids").data("pre"),
+      preventDuplicates: true
   });
+});
 
 
 $(function() {
-      $( ".datepicker_date" ).datepicker();
+    $( ".datepicker_date" ).datepicker();
+
+});
+
+
+$(function() {
+  return $("body").on("change", "#order_service_ids", function() {
+    return $.ajax({
+      type: "POST",
+      url: "get_price.json",
+      data: {
+        services: $("#order_service_ids").val()
+      },
+      success: function(data) {
+        $("#price_span").text(data["price"]);
+        
+        return $("#order_price").val(data["price"]);
+      }
+    });
   });
+});
 </script>

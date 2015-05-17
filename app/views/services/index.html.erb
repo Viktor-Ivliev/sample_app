@@ -13,16 +13,12 @@
       <td>
         Категория
       </td>
-      <td>
-        Скидка
-      </td>
     </tr>
     <% @services.each do |service| %>
         <tr>
           <td><%= service.name %></td>
           <td><%= service.comment %></td>
           <td><%= Categori.find(service.categori_id).name %></td>
-          <td><%= service.discount %></td>
           <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),service, class:"btn-see"%></td>
           <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_service_path(service), class:"btn-see" %></td>
           <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),  service, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>

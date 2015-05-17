@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516114236) do
+ActiveRecord::Schema.define(version: 20150517093609) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "k_indactivities_id"
@@ -71,10 +71,11 @@ ActiveRecord::Schema.define(version: 20150516114236) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "info"
+    t.float    "price"
   end
 
   create_table "prices", force: :cascade do |t|
-    t.integer  "value"
+    t.float    "value"
     t.datetime "data_price"
     t.integer  "service_id"
     t.datetime "created_at", null: false
@@ -87,7 +88,6 @@ ActiveRecord::Schema.define(version: 20150516114236) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "categori_id"
-    t.integer  "discount"
   end
 
   create_table "status_of_implementations", force: :cascade do |t|
