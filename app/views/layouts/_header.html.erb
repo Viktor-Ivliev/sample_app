@@ -5,7 +5,7 @@
           <% if signed_in? %>
           <li><%= link_to image_tag("logo.png", alt: 'Лого', title:"Главная"), current_user , id: "logo" %></li>
           <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/587/w512h5121390727217purchaseorder512.png", alt: 'Заказы', title:"Заказы"),orders_path %></li>
-          <% if current_user.admin?  %>
+          <% if current_user.role == 'Admin' || current_user.role == 'Manager' %>
               <li><%= link_to image_tag("http://s1.iconbird.com/ico/2014/1/633/w512h5121390857141pricetag512.png", alt: 'Цены на услуги', title:"Цены на услуги"),     prices_path %></li>
               <li><%= link_to image_tag("http://library.duke.edu/data/sites/default/files/datagis/users/angela.zoss/iconmonstr-database-10-icon-01.png", alt: 'Услуги', title:"Услуги"),   services_path %></li>
           <%end%>

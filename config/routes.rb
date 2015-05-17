@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :prices
   resources :clients
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :edit, :create, :destroy]
   get 'clients/new'
   get 'users/new'
   get 'static_pages/home'

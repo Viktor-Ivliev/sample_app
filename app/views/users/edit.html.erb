@@ -18,6 +18,12 @@
         <%= f.label :password_confirmation, "Повторите пароль" %>
         <%= f.password_field :password_confirmation %>
 
+         <% if current_user.role != 'Admin' %>
+
+        <%= f.label :role,"Роль"%><br>
+        <%= f.select :role, %w[Developer Manager Admin], {}, class: 'form-control'%>
+        <% end %>
+
         <%= f.submit "Сохранить изменение", class: "btn btn-large btn-primary" %>
     <% end %>
 

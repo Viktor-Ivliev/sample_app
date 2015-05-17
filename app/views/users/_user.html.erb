@@ -1,9 +1,12 @@
 <li>
   <%= gravatar_for user, size: 52 %>
   <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
+  <% if current_user.role == 'Admin' || current_user?(user) %>
+
       | <%= link_to "Удалить", user, method: :delete,
                     data: { confirm: "Вы уверены?" } %>
+      | <%= link_to 'Edit', edit_user_path(user.id) %>
+
   <% end %>
 </li>
 
