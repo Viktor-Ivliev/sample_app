@@ -1,35 +1,48 @@
+<% if signed_in? %>
+    <% provide(:title, 'Анализ') %>
+    <h1>Выручка всех клиентов типа заказов всех </h1>
+    <div id="quarterly"></div>
 
-<div id="quarterly"></div>
+    <script type="text/javascript" charset="utf-8">
 
-<script type="text/javascript" charset="utf-8">
+        Morris.Line({
+            element: 'quarterly',
+            data: [
+                {q: '2009 Q3', a: 100, b: 75},
+                {q: '2010 Q2', a: 75, b: 50},
+                {q: '2010 Q3', a: 75, b: 50},
+                {q: '2011 Q1', a: 50, b: 25},
+                {q: '2011 Q3', a: 50, b: 25},
+                {q: '2011 Q4', a: 75, b: 50},
+                {q: '2012 Q2', a: 100, b: 75}
+            ],
+            xkey: 'q',
+            ykeys: ['a', 'b'],
+            labels: ['Series A', 'Series B'],
+            lineColors: ['#167f39','#044c29'],
+            lineWidth: 2
+        });
+    </script>
+    <!--Morris.Line({
+            element: 'price_chart',
+            data: $('#price_chart').data('price'),
+            xkey: 'data_price',
+            ykeys: ['value'],
+            labels: ['value']
+        });
+        %= content_tag :div, "", id: "price_chart",data:{prices:@prices} %>
 
-    Morris.Line({
-        element: 'quarterly',
-        data: [
-            {q: '2009 Q3', a: 100, b: 75},
-            {q: '2010 Q2', a: 75, b: 50},
-            {q: '2010 Q3', a: 75, b: 50},
-            {q: '2011 Q1', a: 50, b: 25},
-            {q: '2011 Q3', a: 50, b: 25},
-            {q: '2011 Q4', a: 75, b: 50},
-            {q: '2012 Q2', a: 100, b: 75}
-        ],
-        xkey: 'q',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
-        lineColors: ['#167f39','#044c29'],
-        lineWidth: 2
-    });
-</script>
-<!--Morris.Line({
-        element: 'price_chart',
-        data: $('#price_chart').data('price'),
-        xkey: 'data_price',
-        ykeys: ['value'],
-        labels: ['value']
-    });
-    %= content_tag :div, "", id: "price_chart",data:{prices:@prices} %>
+    -->
+    <h1>Выручка по менеджерам </h1>
+<% else %>
+    <h1>Добро пожаловать</h1>
 
--->
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>
+
 
 

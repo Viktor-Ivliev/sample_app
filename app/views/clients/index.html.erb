@@ -1,3 +1,4 @@
+<% if signed_in? %>
 <% provide(:title, 'Все клиенты') %>
 <p id="notice"><%= notice %></p>
 
@@ -41,3 +42,4 @@
 <br>
 
 <%= link_to 'Новый клиент', new_client_path, class: "btn btn-large btn-primary" %>
+<% end %>

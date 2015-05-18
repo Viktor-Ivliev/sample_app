@@ -1,31 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% if signed_in? %><% provide(:title, 'Деятельность сотрудников') %>
+    <p id="notice"><%= notice %></p>
+    <h1 class="zagolovki">Деятельность сотрудников</h1>
+    <div class="ClientsCss" >
+      <table>
+        <tr>
+          <td >
+            Сотрудник
+          </td>
+          <td >
+            Умения
+          </td>
+          <td>
+            Уровень
+          </td>
+        </tr>
+        <% @activities.each do |activity| %>
+            <tr>
+              <td><%= User.find(activity.user_id).name %></td>
+              <td><%= KIndactivity.find(activity.k_indactivities_id).name %></td>
+              <td><%= activity.level %></td>
+              <% if current_user.role == 'Admin' %>
+                  <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"), activity, class:"btn-see"%></td>
+                  <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_activity_path(activity), class:"btn-see" %></td>
+                  <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"), activity, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+              <% end %>
+            </tr>
+        <% end %>
+      </table>
+    </div>
 
-<h1>Listing Activities</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>K indactivities</th>
-      <th>User</th>
-      <th>Level</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <%= link_to 'Новая активность', new_activity_path, class: "btn btn-large btn-primary" %>
 
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= activity.k_indactivities_id %></td>
-        <td><%= activity.user_id %></td>
-        <td><%= activity.level %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Activity', new_activity_path %>
+<%end %>

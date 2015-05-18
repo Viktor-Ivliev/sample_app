@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     param = user_params
     if user_params[:password].blank?
-     param = param.except!(:password, :password_confirmation)
+      param = param.except!(:password, :password_confirmation)
     end
     if @user.update_attributes(param)
       flash[:success] = "Профиль обновлён"
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :role)
-  end
+    end
   # Before filters/фильтры
 
 
@@ -62,6 +62,6 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user) || !current_user.role == 'Developer'
+    redirect_to(root_url) unless current_user?(@user) || current_user.role != 'Developer'
   end
 end

@@ -1,9 +1,17 @@
 <div class="center hero-unit">
+  <% if signed_in? %>
   <h1>Добро пожаловать</h1>
 
   <h2>
     Программа предозначена для удобной работы сотрудников компании
   </h2>
+  <% else %>
+  <h1>Добро пожаловать</h1>
 
-  <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %>
+  <h2>
+    Программа предозначена для удобной работы сотрудников компании
+  </h2>
+  <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+  <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>

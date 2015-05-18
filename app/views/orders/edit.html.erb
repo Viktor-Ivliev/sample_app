@@ -1,55 +1,56 @@
-<h1 class="zagolovki" >Редактирование заказа</h1>
-<div class="row">
-  <div class="span6 offset3">
-   <%= form_for(@order) do |f| %>
-    <% if @order.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<% if signed_in? %><h1 class="zagolovki" >Редактирование заказа</h1>
+    <div class="row">
+      <div class="span6 offset3">
+        <%= form_for(@order) do |f| %>
+            <% if @order.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-          <ul>
-            <% @order.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+                  <ul>
+                    <% @order.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
             <% end %>
-          </ul>
-        </div>
-    <% end %>
 
-    <%= "Дата заказа #{@order.date_order}" %><br>
-    <%= "Клиент #{@order.client.name}" %><br>
-    <%= "Цена #{@order.price}" %><br>
+            <%= "Дата заказа #{@order.date_order}" %><br>
+            <%= "Клиент #{@order.client.name}" %><br>
+            <%= "Цена #{@order.price}" %><br>
 
-    <p>
-      <strong>Услуги:</strong>
-      <br/>
-      <% @order.services.each do |service| %>
-          <span><%= service.name %> (<%= service.categori.name%>)</span><br/>
-      <% end %>
-    </p>
+            <p>
+              <strong>Услуги:</strong>
+              <br/>
+              <% @order.services.each do |service| %>
+                  <span><%= service.name %> (<%= service.categori.name%>)</span><br/>
+              <% end %>
+            </p>
 
 
-      <%= f.label :name, "Название заказа"%><br>
-      <%= f.text_field :name %>
+            <%= f.label :name, "Название заказа"%><br>
+            <%= f.text_field :name %>
 
-      <%= f.label :info, "Дополнительная информация" %></br>
-      <%= f.text_field :info %>
+            <%= f.label :info, "Дополнительная информация" %></br>
+            <%= f.text_field :info %>
 
-      Даты показа для категрий: Новости, главная и тд..
-      <%= f.fields_for :grafs do |builder| %>
-          <%= render "graf_fields", :f => builder %>
-      <% end %>
-    <p><%= link_to_add_fields "Добавить дату", f, :grafs %></p>
+            Даты показа для категрий: Новости, главная и тд..
+            <%= f.fields_for :grafs do |builder| %>
+                <%= render "graf_fields", :f => builder %>
+            <% end %>
+            <p><%= link_to_add_fields "Добавить дату", f, :grafs %></p>
 
-    <%= f.submit "Добавить", class: "btn"%>
-    <%= link_to 'Назад',  orders_path, class: "btn" %>
-    <% end %>
-  </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
-            crossDomain: false,
-            prePopulate: $("#order_service_ids").data("pre"),
-            preventDuplicates: true
+            <%= f.submit "Добавить", class: "btn"%>
+            <%= link_to 'Назад',  orders_path, class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#order_service_ids").tokenInput("/services/get_services_grup.json", {
+                crossDomain: false,
+                prePopulate: $("#order_service_ids").data("pre"),
+                preventDuplicates: true
+            });
         });
-    });
-</script>
+    </script>
+<%end %>

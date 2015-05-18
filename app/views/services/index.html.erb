@@ -1,31 +1,41 @@
-<% provide(:title, 'Все услуги') %>
-<p id="notice"><%= notice %></p>
-<h1 class="zagolovki" >Все услуги</h1>
-<div class="ClientsCss" >
-  <table>
-    <tr>
-      <td >
-        Название
-      </td>
-      <td >
-        Описание
-      </td>
-      <td>
-        Категория
-      </td>
-    </tr>
-    <% @services.each do |service| %>
+<% if signed_in? %><% provide(:title, 'Создание заказа') %>
+    <% provide(:title, 'Все услуги') %>
+    <p id="notice"><%= notice %></p>
+    <h1 class="zagolovki" >Все услуги</h1>
+    <div class="ClientsCss" >
+      <table>
         <tr>
-          <td><%= service.name %></td>
-          <td><%= service.comment %></td>
-          <td><%= Categori.find(service.categori_id).name %></td>
-          <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),service, class:"btn-see"%></td>
-          <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_service_path(service), class:"btn-see" %></td>
-          <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),  service, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+          <td >
+            Название
+          </td>
+          <td >
+            Описание
+          </td>
+          <td>
+            Категория
+          </td>
         </tr>
-    <% end %>
-  </table>
-</div>
+        <% @services.each do |service| %>
+            <tr>
+              <td><%= service.name %></td>
+              <td><%= service.comment %></td>
+              <td><%= Categori.find(service.categori_id).name %></td>
+              <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),service, class:"btn-see"%></td>
+              <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_service_path(service), class:"btn-see" %></td>
+              <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),  service, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
 
 
-<%= link_to 'Новая услуга', new_service_path , class: "btn btn-large btn-primary" %>
+    <%= link_to 'Новая услуга', new_service_path , class: "btn btn-large btn-primary" %>
+<% else %>
+    <h1>Добро пожаловать</h1>
+
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>

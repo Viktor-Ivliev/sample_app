@@ -1,440 +1,442 @@
-<% provide(:title, @user.name) %>
+<% if signed_in? %><% provide(:title, 'Создание заказа') %>
+    <% provide(:title, @user.name) %>
 
-<div class="row">
-  <aside class="span4">
-    <section>
+
+    <div class="avatar-aang">
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-    </section>
-  </aside>
-</div>
-
-
-<div class="tabs">
-  <input id="tab1" type="radio" name="tabs" checked>
-  <label for="tab1" >Карта сайта</label>
-
-  <input id="tab2" type="radio" name="tabs">
-  <label for="tab2" >Вкладка 2</label>
-
-  <input id="tab3" type="radio" name="tabs">
-  <label for="tab3" >Вкладка 3</label>
-
-  <input id="tab4" type="radio" name="tabs">
-  <label for="tab4" >Вкладка 4</label>
-
-  <section class="content-menu" id="content1">
-    <p>
-      <!-- карта сайте располежение баннеров-->
-    <div class="banner banner01">
-      <p>
-        1
-      </p>
     </div>
 
-    <div class="img_banner01 brg">
-      <%=  image_tag("1.png", alt: "1") %>
-    </div>
 
-    <div class="banner banner02 brg ">
-      <p>
-        2
-      </p>
-    </div>
-    <div class="banner banner03 br">
-      <p>
-        3
-      </p>
-    </div>
-    <div class="banner banner04 br br4" >
-      <p>
-        4
-      </p>
-    </div>
-    <!-- блоки верх до логотипов-->
-    <div class="container_img_banner">
-      <div class="container_banner">
-        <div class="img_banner03 ">
-          <%= image_tag("3.png", alt: "3") %>
-        </div>
-      </div>
+    <% if  current_user.role == 'Manager' %>
+        <div class="tabs">
+          <input id="tab1" type="radio" name="tabs" checked>
+          <label for="tab1" >Карта сайта</label>
 
-      <div class=" container2 container_banner">
-        <div class="img_banner02 display_banner">
-          <%=  image_tag("2.png", alt: "2") %>
-        </div>
-        <div class="banner banner10 display_banner">
-          <p>
-          10
-        </p>
-        </div>
-        <div class="img_banner04 display_banner">
-          <%=  image_tag("4.png", alt: "4") %>
-        </div>
-      </div>
 
-      <div class="container3 container_banner">
-        <div class="banner banner05 display_banner">
-          <p>
-           5
-          </p>
-        </div>
-        <div class="banner banner06 display_banner">
-          <p>
-            6
-          </p>
-        </div>
-        <div class="img_banner05 display_banner">
-          <%=  image_tag("5.png", alt: "5") %></div>
-      </div>
-      <!-- конец блоки верх до логотипов-->
-      <!-- блоки низ после логотипов-->
 
-      <div class=" container_img">
-        <div class="img_banner06 display_banner">
-          <%=  image_tag("6.png", alt: "6") %>
-        </div>
-        <div class="banner banner08 display_banner">
-          <p>
-            8
-          </p>
-        </div>
-        <div class="img_banner09 display_banner">
-          <%= image_tag("9.png", alt: "9") %>
-        </div>
-      </div>
-
-      <div class="container2 container_img">
-        <div class="img_banner07 display_banner">
-          <%= image_tag("7.png", alt: "7") %>
-        </div>
-      </div>
-
-      <div class="container2 container_img">
-        <div class="banner banner07 display_banner">
-          <p>
-            7
-          </p>
-        </div>
-        <div class="img_banner08 display_banner">
-          <%= image_tag("8.png", alt: "8") %>
-        </div>
-      </div>
-    </div>
-    <!-- конец блоки низ после логотипов-->
-
-    <div class="banner banner09">
-      <p>
-        9
-      </p>
-    </div>
-
-    </p>
-  </section>
-  <section class="content-menu" id="content2">
-
-  </section>
-  <section class="content-menu" id="content3">
-    <p>
-      Здесь размещаете любое содержание....
-    </p>
-  </section>
-  <section class="content-menu" id="content4">
-    <p>
-      Здесь размещаете любое содержание....
-    </p>
-  </section>
-</div>
-
-<!-- тут для каждого твоего банера свое модальное окно -->
-<!-- Button trigger modal -->
-<script type="text/javascript">
-    $('.modal.fade.bs-example-modal-lg').modal('hide');
-    $( ".banner01" ).click(function() {
-        $('#myModal1').modal();
-    });
-    $( ".banner02" ).click(function() {
-        $('#myModal2').modal();
-    });
-    $( ".banner03" ).click(function() {
-        $('#myModal3').modal();
-    });
-    $( ".banner04" ).click(function() {
-        $('#myModal4').modal();
-    });
-    $( ".banner05" ).click(function() {
-        $('#myModal5').modal();
-    });
-    $( ".banner06" ).click(function() {
-        $('#myModal6').modal();
-    });
-    $( ".banner07" ).click(function() {
-        $('#myModal7').modal();
-    });
-    $( ".banner08" ).click(function() {
-        $('#myModal8').modal();
-    });
-    $( ".banner09" ).click(function() {
-        $('#myModal9').modal();
-    });
-    $( ".banner10" ).click(function() {
-        $('#myModal10').modal();
-    });
-    </script>
-
-<!-- Modal -->
-<!-- 1 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Банер 1. Список заказов.</h4>
-        </div>
-        <div class="modal-body">
-          <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-            <div class="ClientsCss" >
-              <table >
-                <%= render "modal_header_table_baner" %>
-                <% Order.joins(table_service_orders: :service).where("service_id = 26").each do |order| %>
-                    <%= render "modal_body_table_baner", order: order %>
-                    <% end %>
-              </table>
+          <section class="content-menu" id="content1">
+            <p>
+              <!-- карта сайте располежение баннеров-->
+            <div class="banner banner01">
+              <p>
+                1
+              </p>
             </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-<!-- 2 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal2" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Банер 2. Список заказов.</h4>
-        </div>
-        <div class="modal-body">
-          <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-            <div class="ClientsCss" >
-              <table >
-                <%= render "modal_header_table_baner" %>
-                <% Order.joins(table_service_orders: :service).where("service_id = 27").each do |order| %>
-                    <%= render "modal_body_table_baner", order: order %>
-                    <% end %>
-              </table>
+            <div class="img_banner01 brg">
+              <%=  image_tag("1.png", alt: "1") %>
             </div>
+
+            <div class="banner banner02 brg ">
+              <p>
+                2
+              </p>
+            </div>
+            <div class="banner banner03 br">
+              <p>
+                3
+              </p>
+            </div>
+            <div class="banner banner04 br br4" >
+              <p>
+                4
+              </p>
+            </div>
+            <!-- блоки верх до логотипов-->
+            <div class="container_img_banner">
+              <div class="container_banner">
+                <div class="img_banner03 ">
+                  <%= image_tag("3.png", alt: "3") %>
+                </div>
+              </div>
+
+              <div class=" container2 container_banner">
+                <div class="img_banner02 display_banner">
+                  <%=  image_tag("2.png", alt: "2") %>
+                </div>
+                <div class="banner banner10 display_banner">
+                  <p>
+                    10
+                  </p>
+                </div>
+                <div class="img_banner04 display_banner">
+                  <%=  image_tag("4.png", alt: "4") %>
+                </div>
+              </div>
+
+              <div class="container3 container_banner">
+                <div class="banner banner05 display_banner">
+                  <p>
+                    5
+                  </p>
+                </div>
+                <div class="banner banner06 display_banner">
+                  <p>
+                    6
+                  </p>
+                </div>
+                <div class="img_banner05 display_banner">
+                  <%=  image_tag("5.png", alt: "5") %></div>
+              </div>
+              <!-- конец блоки верх до логотипов-->
+              <!-- блоки низ после логотипов-->
+
+              <div class=" container_img">
+                <div class="img_banner06 display_banner">
+                  <%=  image_tag("6.png", alt: "6") %>
+                </div>
+                <div class="banner banner08 display_banner">
+                  <p>
+                    8
+                  </p>
+                </div>
+                <div class="img_banner09 display_banner">
+                  <%= image_tag("9.png", alt: "9") %>
+                </div>
+              </div>
+
+              <div class="container2 container_img">
+                <div class="img_banner07 display_banner">
+                  <%= image_tag("7.png", alt: "7") %>
+                </div>
+              </div>
+
+              <div class="container2 container_img">
+                <div class="banner banner07 display_banner">
+                  <p>
+                    7
+                  </p>
+                </div>
+                <div class="img_banner08 display_banner">
+                  <%= image_tag("8.png", alt: "8") %>
+                </div>
+              </div>
+            </div>
+            <!-- конец блоки низ после логотипов-->
+
+            <div class="banner banner09">
+              <p>
+                9
+              </p>
+            </div>
+
+            </p>
+          </section>
+          <section class="content-menu" id="content2">
+
+          </section>
+          <section class="content-menu" id="content3">
+            <p>
+              Здесь размещаете любое содержание....
+            </p>
+          </section>
+          <section class="content-menu" id="content4">
+            <p>
+              Здесь размещаете любое содержание....
+            </p>
+          </section>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+
+        <!-- тут для каждого твоего банера свое модальное окно -->
+        <!-- Button trigger modal -->
+        <script type="text/javascript">
+            $('.modal.fade.bs-example-modal-lg').modal('hide');
+            $( ".banner01" ).click(function() {
+                $('#myModal1').modal();
+            });
+            $( ".banner02" ).click(function() {
+                $('#myModal2').modal();
+            });
+            $( ".banner03" ).click(function() {
+                $('#myModal3').modal();
+            });
+            $( ".banner04" ).click(function() {
+                $('#myModal4').modal();
+            });
+            $( ".banner05" ).click(function() {
+                $('#myModal5').modal();
+            });
+            $( ".banner06" ).click(function() {
+                $('#myModal6').modal();
+            });
+            $( ".banner07" ).click(function() {
+                $('#myModal7').modal();
+            });
+            $( ".banner08" ).click(function() {
+                $('#myModal8').modal();
+            });
+            $( ".banner09" ).click(function() {
+                $('#myModal9').modal();
+            });
+            $( ".banner10" ).click(function() {
+                $('#myModal10').modal();
+            });
+        </script>
+
+        <!-- Modal -->
+        <!-- 1 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Банер 1. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 26").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-<!-- 3 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal3" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 3. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 28").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+
+        <!-- 2 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal2" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 2. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 27").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 4 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal4" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 4. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 29").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 3 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal3" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 3. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 28").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 5 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal5" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 5. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 30").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 4 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal4" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 4. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 29").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 6 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal6" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 6. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% @banner6.each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 5 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal5" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 5. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 30").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 7 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal7" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 7. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 32").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 6 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal6" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 6. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% @banner6.each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 8 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal8" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 8. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 33").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 7 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal7" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 7. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 32").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 9 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal9" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 9. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 34").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 8 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal8" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 8. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 33").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- 10 -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Банер 10. Список заказов.</h4>
-      </div>
-      <div class="modal-body">
-        <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
-        <div class="ClientsCss" >
-          <table >
-            <%= render "modal_header_table_baner" %>
-            <% Order.joins(table_service_orders: :service).where("service_id = 25").each do |order| %>
-                <%= render "modal_body_table_baner", order: order %>
-            <% end %>
-          </table>
+        <!-- 9 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal9" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 9. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 34").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- 10 -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" id="myModal10" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Банер 10. Список заказов.</h4>
+              </div>
+              <div class="modal-body">
+                <%= link_to 'Новый заказ', new_order_path , class: "btn btn-large btn-primary"%>
+                <div class="ClientsCss" >
+                  <table >
+                    <%= render "modal_header_table_baner" %>
+                    <% Order.joins(table_service_orders: :service).where("service_id = 25").each do |order| %>
+                        <%= render "modal_body_table_baner", order: order %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+<% else %>
+    <h1>Добро пожаловать</h1>
+
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>
 
 
 

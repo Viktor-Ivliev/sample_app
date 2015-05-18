@@ -1,33 +1,44 @@
-<% provide(:title, "Редактировать профиль") %>
-<h1 class="zagolovki">Изменить профиль</h1>
+<% if signed_in? %>
+    <% provide(:title, "Редактировать профиль") %>
+    <h1 class="zagolovki">Изменить профиль</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
+    <div class="row">
+      <div class="span6 offset3">
+        <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages' %>
 
-        <%= f.label :name, "Имя"%>
-        <%= f.text_field :name %>
+            <%= f.label :name, "Имя"%>
+            <%= f.text_field :name %>
 
-        <%= f.label :email, "Почта" %>
-        <%= f.text_field :email %>
+            <%= f.label :email, "Почта" %>
+            <%= f.text_field :email %>
 
-        <%= f.label :password, "Пароль" %>
-        <%= f.password_field :password %>
+            <%= f.label :password, "Пароль" %>
+            <%= f.password_field :password %>
 
-        <%= f.label :password_confirmation, "Повторите пароль" %>
-        <%= f.password_field :password_confirmation %>
+            <%= f.label :password_confirmation, "Повторите пароль" %>
+            <%= f.password_field :password_confirmation %>
 
-         <% if current_user.role != 'Admin' %>
+            <% if current_user.role == 'Admin' %>
 
-        <%= f.label :role,"Роль"%><br>
-        <%= f.select :role, %w[Developer Manager Admin], {}, class: 'form-control'%>
+                <%= f.label :role,"Роль"%><br>
+                <%= f.select :role, %w[Developer Manager Admin], {}, class: 'form-control'%>
+
+            <% end %>
+
+            <%= f.submit "Сохранить изменение", class: "btn btn-large btn-primary" %>
         <% end %>
 
-        <%= f.submit "Сохранить изменение", class: "btn btn-large btn-primary" %>
-    <% end %>
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails">Изменить</a>
+      </div>
+    </div>
+<% else %>
+    <h1>Добро пожаловать</h1>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">Изменить</a>
-  </div>
-</div>
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>

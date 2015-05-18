@@ -1,48 +1,50 @@
-<% provide(:title,  'Просмотр задания') %>
-<p id="notice"><%= notice %></p>
-<h1 class="zagolovki">Просмотр задания</h1>
+<% if signed_in? %><% provide(:title,  'Просмотр задания') %>
+    <p id="notice"><%= notice %></p>
+    <h1 class="zagolovki">Просмотр задания</h1>
 
 
-<div class="ohyenchik6">
-  <div class="ohyenchik5">
-    <p>
-      <strong>Сотрудник:</strong>
-      <%= @assignment.user.name %>
-    </p>
-  </div>
-  <hr>
-<p>
-  <strong>Заказ:</strong>
-  <%= @assignment.status_of_implementation.order.name %>
-</p>
+    <div class="ohyenchik6">
+      <div class="ohyenchik5">
+        <p>
+          <strong>Сотрудник:</strong>
+          <%= @assignment.user.name %>
+        </p>
+      </div>
+      <hr>
+      <p>
+        <strong>Заказ:</strong>
+        <%= @assignment.status_of_implementation.order.name %>
+      </p>
 
-<p>
-  <strong>Краткое описание задачи:</strong>
-    <%= @assignment.succinctly %>
-  </p>
+      <p>
+        <strong>Краткое описание задачи:</strong>
+        <%= @assignment.succinctly %>
+      </p>
 
-<p>
-    <strong>Полное описание задачи:</strong>
-    <%= @assignment.description %>
-  </p>
+      <p>
+        <strong>Полное описание задачи:</strong>
+        <%= @assignment.description %>
+      </p>
 
-<p>
-    <strong>Статус выполнения:</strong>
-    <%= @assignment.status  %>
-</p>
+      <p>
+        <strong>Статус выполнения:</strong>
+        <%= @assignment.status  %>
+      </p>
 
-<p>
-  <strong>Время на всю задачу:</strong>
-  <%= @assignment.time_word %>
-</p>
-<p>
-  <strong>Время выполнения:</strong>
-    <%= @assignment.runtime %>
-</p>
-<p>
-  <strong>Описание выполнения:</strong>
-  <%= @assignment.report %>
-</p>
-</div>
-<%= link_to 'Изменить', edit_assignment_path(@assignment), class:"btn" %> |
-<%= link_to 'Назад', assignments_path, class:"btn"%>
+      <p>
+        <strong>Время на всю задачу:</strong>
+        <%= @assignment.time_word %>
+      </p>
+      <p>
+        <strong>Время выполнения:</strong>
+        <%= @assignment.runtime %>
+      </p>
+      <p>
+        <strong>Описание выполнения:</strong>
+        <%= @assignment.report %>
+      </p>
+    </div>
+    <%= link_to 'Изменить', edit_assignment_path(@assignment), class:"btn" %> |
+    <%= link_to 'Назад', assignments_path, class:"btn"%>
+
+<%end %>

@@ -1,32 +1,43 @@
-<% provide(:title, 'Отчет от выполненой работе') %>
-<h1 class="zagolovki" >Отчет от выполненой работе</h1>
-<p>
-  <strong>Заказ:</strong>
-  <%= @status_of_implementation.order.name %>
-</p>
+<% if signed_in? %><% provide(:title, 'Создание заказа') %>
+    <% provide(:title, 'Отчет от выполненой работе') %>
+    <h1 class="zagolovki" >Отчет от выполненой работе</h1>
+    <p>
+      <strong>Заказ:</strong>
+      <%= @status_of_implementation.order.name %>
+    </p>
 
-<p>
-  <strong>Число до которого нужно сделать задания:</strong>
-  <%= @status_of_implementation.date_status.to_date %>
-</p>
-   <strong>Действие сотрудников:</strong><br/>
-     <% @status_of_implementation.assignments.each do |assignment| %>
-    <div class="ohyenchik"><div class="ohyenchik3"><%= "Выполняет: #{assignment.user.name}" %></br></div>
-       <%= "Задание: #{assignment.succinctly}" %><br/>
-            <%= "Описание: #{assignment.description}" %><br/>
-            <%= "Время на задание: #{assignment.time_word}" %><br/></div>
-           <hr class="hr">
-    <div class="ohyenchik2"><%= "Статус выполнения: #{assignment.status}" %><br/>
-            <%= "Время выполнения: #{assignment.runtime ||= 0}" %><br/>
-            <%= "Отчет от сотрудника: #{assignment.report}" if !assignment.report.blank?%><br/>
-    </div>
-           <hr class="hr">
-          <% end %>
-</p>
-<p>
-  <strong>Статус выполнения задачи:</strong>
-  <%= @status_of_implementation.status %>
-</p>
+    <p>
+      <strong>Число до которого нужно сделать задания:</strong>
+      <%= @status_of_implementation.date_status.to_date %>
+    </p>
+    <strong>Действие сотрудников:</strong><br/>
+    <% @status_of_implementation.assignments.each do |assignment| %>
+        <div class="ohyenchik"><div class="ohyenchik3"><%= "Выполняет: #{assignment.user.name}" %></br></div>
+          <%= "Задание: #{assignment.succinctly}" %><br/>
+          <%= "Описание: #{assignment.description}" %><br/>
+          <%= "Время на задание: #{assignment.time_word}" %><br/></div>
+        <hr class="hr">
+        <div class="ohyenchik2"><%= "Статус выполнения: #{assignment.status}" %><br/>
+          <%= "Время выполнения: #{assignment.runtime ||= 0}" %><br/>
+          <%= "Отчет от сотрудника: #{assignment.report}" if !assignment.report.blank?%><br/>
+        </div>
+        <hr class="hr">
+    <% end %>
+    </p>
+    <p>
+      <strong>Статус выполнения задачи:</strong>
+      <%= @status_of_implementation.status ? "Выполнено" : "Невыполнено" %>
+    </p>
 
-<%= link_to 'Редактировать', edit_status_of_implementation_path(@status_of_implementation), class:"btn" %> |
-<%= link_to 'Назад', status_of_implementations_path, class:"btn" %>
+    <%= link_to 'Редактировать', edit_status_of_implementation_path(@status_of_implementation), class:"btn" %> |
+    <%= link_to 'Назад', status_of_implementations_path, class:"btn" %>
+
+<% else %>
+    <h1>Добро пожаловать</h1>
+
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>

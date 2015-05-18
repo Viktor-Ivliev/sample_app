@@ -1,16 +1,26 @@
-<% provide(:title, 'Просмотр цен') %>
-<h1 class="zagolovki" >Просмотр цен</h1>
-<p>
-  <strong>Услуга:</strong>
-  <%= @price.service.name %>
-</p>
-<p>
-  <strong>Цена:</strong>
-  <%= @price.value %>
-</p>
-<p>
-  <strong>Дата:</strong>
-  <%= @price.data_price.to_date %>
-</p>
-<%= link_to 'Редактировать', edit_price_path(@price) , class:"btn"%> |
-<%= link_to 'Назад', prices_path, class:"btn"%>
+<% if signed_in? %><% provide(:title, 'Создание заказа') %>
+    <% provide(:title, 'Просмотр цен') %>
+    <h1 class="zagolovki" >Просмотр цен</h1>
+    <p>
+      <strong>Услуга:</strong>
+      <%= @price.service.name %>
+    </p>
+    <p>
+      <strong>Цена:</strong>
+      <%= @price.value %>
+    </p>
+    <p>
+      <strong>Дата:</strong>
+      <%= @price.data_price.to_date %>
+    </p>
+    <%= link_to 'Редактировать', edit_price_path(@price) , class:"btn"%> |
+    <%= link_to 'Назад', prices_path, class:"btn"%>
+<% else %>
+    <h1>Добро пожаловать</h1>
+
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>

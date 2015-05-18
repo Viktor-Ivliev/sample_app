@@ -692,11 +692,11 @@ $sublime-button-radius: 13px;
   line-height: 29px;
   /* text-indent: initial; */
   padding: 27px;
-  padding-bottom: 126px;
+  padding-bottom: 100px;
   /* text-align: center; */
   background: rgba(239, 233, 120, 0.28);
   /* width: 568px; */
-  height: 121px;
+  height: 255px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   margin-bottom: 15px;
   margin-top: 15px;
@@ -718,11 +718,25 @@ $sublime-button-radius: 13px;
 .ohyenchik6 {
   padding-top: 42px;
   padding-left: 25px;
-  height: 350px;
+  height: 435px;
   width: 539px;
   background: #FFFFFF;
   /* text-align: center; */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   /* margin-top: 0px; */
   margin-bottom: 41px;
+}
+.avatar-aang{
+  padding: 15px;
+  height: 79px;
+  font-size: 8px;
+  text-align: center;
+  width: 301px;
+  background: #FFFFFF;
+  margin-bottom: 45px;
+  /* width: 80%; */
+  /* max-width: 550px; */
+  /* margin: 3em auto; */
+  /* padding: 4em; */
+  box-shadow: 7px 14px 100px -32px #0454fb;
 }

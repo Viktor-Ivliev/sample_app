@@ -15,10 +15,14 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
+    @k_indactivities_all = KIndactivity.all
+    @user_all = User.all
   end
 
   # GET /activities/1/edit
   def edit
+    @k_indactivities_all = KIndactivity.all
+    @user_all = User.all
   end
 
   # POST /activities

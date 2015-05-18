@@ -1,11 +1,22 @@
-<% provide(:title, 'Регистрация') %>
-<h1 class="zagolovki" >Регистрация пользователя</h1>
+<% if signed_in? %><% provide(:title, 'Создание заказа') %>
+    <% provide(:title, 'Регистрация') %>
+    <h1 class="zagolovki" >Регистрация пользователя</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for (@user) do |f| %>
-        <%= render 'fields', f: f %>
-        <%= f.submit "Регистрация", class: "btn" %>
-    <% end %>
-</div>
-</div>
+    <div class="row">
+      <div class="span6 offset3">
+        <%= form_for (@user) do |f| %>
+            <%= render 'fields', f: f %>
+            <%= f.submit "Регистрация", class: "btn" %>
+        <% end %>
+      </div>
+    </div>
+
+<% else %>
+    <h1>Добро пожаловать</h1>
+
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>

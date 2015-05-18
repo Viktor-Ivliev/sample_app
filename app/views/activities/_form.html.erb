@@ -1,7 +1,7 @@
 <%= form_for(@activity) do |f| %>
   <% if @activity.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+      <h2><%= pluralize(@activity.errors.count, "error") %> Не создано, заполните соответсвующие поля:</h2>
 
       <ul>
       <% @activity.errors.full_messages.each do |message| %>
@@ -11,19 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :k_indactivities_id %><br>
-    <%= f.text_field :k_indactivities_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :level %><br>
+    <%= f.label :user_id , "Сотрудник" %><br>
+    <%= f.collection_select(:user_id, @user_all, :id, :name) %>
+
+    <%= f.label :k_indactivities_id, "Деятельность" %><br>
+    <%= f.collection_select(:k_indactivities_id, @k_indactivities_all, :id, :name) %>
+
+    <%= f.label :level, "Уровень" %><br>
     <%= f.number_field :level %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <%= f.submit "Добавить" , class:"btn"%>
+
 <% end %>

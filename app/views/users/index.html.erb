@@ -1,10 +1,21 @@
-<% provide(:title, 'Все сотрудники') %>
-<h1 class="zagolovki" >Все сотрудники</h1>
+<% if signed_in? %><% provide(:title, 'Создание заказа') %>
+    <% provide(:title, 'Все сотрудники') %>
+    <h1 class="zagolovki" >Все сотрудники</h1>
 
-<%= will_paginate %>
+    <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+    <ul class="users">
+      <%= render @users %>
+    </ul>
 
-<%= will_paginate %>
+    <%= will_paginate %>
+
+<% else %>
+    <h1>Добро пожаловать</h1>
+
+    <h2>
+      Программа предозначена для удобной работы сотрудников компании
+    </h2>
+    <%= link_to "Зарегистрироваться", signup_path , class: "btn btn-large btn-primary" %> |
+    <%= link_to "Войти", signin_path , class: "btn btn-large btn-primary" %>
+<% end %>
