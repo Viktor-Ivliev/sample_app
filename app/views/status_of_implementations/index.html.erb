@@ -1,7 +1,7 @@
 <% if signed_in? %>
     <% provide(:title, 'Все задачи') %>
     <p id="notice"><%= notice %></p>
-    <h1 class="zagolovki">Список задач сотрудникам</h1>
+    <h1 class="zagolovki">Текущие задачи сотрудникам</h1>
     <div class="ClientsCss" >
       <table>
         <tr>
@@ -15,7 +15,41 @@
             Статус выполнения
           </td>
         </tr>
-        <% @status_of_implementations.each do |status_of_implementation| %>
+        <% @status_of_implementations_false.each do |status_of_implementation| %>
+
+            <tr>
+              <% if status_of_implementation.date_status.to_date >  Date.current %></td>
+              <td><%= status_of_implementation.order.name %></td>
+              <td><%= status_of_implementation.date_status.to_date %></td>
+              <td>Выполняется</td>
+              <% else %>
+              <td class="expired"><%= status_of_implementation.order.name %></td>
+              <td class="expired"><%= status_of_implementation.date_status.to_date %></td>
+              <td class="expired">Просрато</td>
+              <% end %>
+              <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"), status_of_implementation , class:"btn-see"%></td>
+              <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_status_of_implementation_path(status_of_implementation), class:"btn-see" %></td>
+              <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),status_of_implementation, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+    <br>
+        <h1 class="zagolovki">Выполненные списки</h1>
+    <div class="ClientsCss" >
+      <table>
+        <tr>
+          <td >
+            Заказ
+          </td>
+          <td >
+            Дата до которой нужно сделать задачу
+          </td>
+          <td>
+            Статус выполнения
+          </td>
+        </tr>
+        <% @status_of_implementations_true.each do |status_of_implementation| %>
             <tr>
               <td><%= status_of_implementation.order.name %></td>
               <td><%= status_of_implementation.date_status.to_date %></td>
@@ -27,7 +61,6 @@
         <% end %>
       </table>
     </div>
-    <br>
 
     <%= link_to 'Новая задача', new_status_of_implementation_path , class: "btn btn-large btn-primary" %>
 

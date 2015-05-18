@@ -4,7 +4,9 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @assignments = Assignment.where("assignments.user_id = ?", current_user)
+    @assignments_false = @assignments.joins(:status_of_implementation).where("status_of_implementations.status = 'f'")
+    @assignments_true = @assignments.joins(:status_of_implementation).where("status_of_implementations.status = 't'")
   end
 
   # GET /assignments/1

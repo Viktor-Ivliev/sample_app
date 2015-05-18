@@ -17,7 +17,37 @@
             Время на выполнения
           </td>
         </tr>
-        <% @assignments.each do |assignment| %>
+        <% @assignments_false.each do |assignment| %>
+            <tr>
+              <td><%= assignment.user.name %></td>
+              <td><%= assignment.succinctly %></td>
+              <td><%= assignment.status %></td>
+              <td><%= assignment.time_word  %> ч.</td>
+              <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"),  assignment, class:"btn-see"%></td>
+              <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_assignment_path(assignment), class:"btn-see" %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+    
+    <h1 class="zagolovki">список ваших выполниных задач</h1>
+    <div class="ClientsCss" >
+      <table>
+        <tr>
+          <td >
+            Сотрудник
+          </td>
+          <td >
+            Краткое описание задачи
+          </td>
+          <td>
+            Статус выполнения
+          </td>
+          <td>
+            Время на выполнения
+          </td>
+        </tr>
+        <% @assignments_true.each do |assignment| %>
             <tr>
               <td><%= assignment.user.name %></td>
               <td><%= assignment.succinctly %></td>

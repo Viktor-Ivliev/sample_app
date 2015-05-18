@@ -4,7 +4,8 @@ class StatusOfImplementationsController < ApplicationController
   # GET /status_of_implementations
   # GET /status_of_implementations.json
   def index
-    @status_of_implementations = StatusOfImplementation.all
+    @status_of_implementations_false = StatusOfImplementation.where(status: false)
+    @status_of_implementations_true = StatusOfImplementation.where(status: true)
   end
 
   # GET /status_of_implementations/1
