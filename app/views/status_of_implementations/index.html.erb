@@ -17,16 +17,16 @@
         </tr>
         <% @status_of_implementations_false.each do |status_of_implementation| %>
 
-            <tr>
-              <% if status_of_implementation.date_status.to_date >  Date.current %></td>
+          <tr>
+            <% if status_of_implementation.date_status.to_date >  Date.current %> </td>
               <td><%= status_of_implementation.order.name %></td>
               <td><%= status_of_implementation.date_status.to_date %></td>
-              <td>Выполняется</td>
-              <% else %>
-              <td class="expired"><%= status_of_implementation.order.name %></td>
-              <td class="expired"><%= status_of_implementation.date_status.to_date %></td>
-              <td class="expired">Просрато</td>
-              <% end %>
+                <td>Выполняется</td>
+            <% else %>
+                <td class="expired"><%= status_of_implementation.order.name %></td>
+                <td class="expired"><%= status_of_implementation.date_status.to_date %></td>
+                <td class="expired">Просрато</td>
+            <% end %>
               <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"), status_of_implementation , class:"btn-see"%></td>
               <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_status_of_implementation_path(status_of_implementation), class:"btn-see" %></td>
               <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),status_of_implementation, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
@@ -35,7 +35,9 @@
       </table>
     </div>
     <br>
-        <h1 class="zagolovki">Выполненные списки</h1>
+    <%= link_to 'Новая задача', new_status_of_implementation_path , class: "btn btn-large btn-primary" %>
+
+    <h1 class="zagolovki">Выполненные задачи</h1>
     <div class="ClientsCss" >
       <table>
         <tr>
@@ -43,7 +45,7 @@
             Заказ
           </td>
           <td >
-            Дата до которой нужно сделать задачу
+            Дата до которой нужно было сделать
           </td>
           <td>
             Статус выполнения
@@ -55,14 +57,10 @@
               <td><%= status_of_implementation.date_status.to_date %></td>
               <td><%=  status_of_implementation.status ? "Выполнено" : "Невыполнено" %></td>
               <td class="btn-see"><%= link_to  image_tag("http://s1.iconbird.com/ico/2013/9/452/w514h3201380476829eye.png"), status_of_implementation , class:"btn-see"%></td>
-              <td class="btn-see"><%= link_to image_tag("http://sombrinha.net/studiocomciencia.com/images/pencil.png"), edit_status_of_implementation_path(status_of_implementation), class:"btn-see" %></td>
-              <td class="btn-see"><%= link_to image_tag("http://remont.vividnv.ru/media.lpgenerator.ru/images/167038/w448h5121380477116trash.png"),status_of_implementation, method: :delete, data: { confirm: 'Вы уверены?' }, class:"btn-see" %></td>
             </tr>
         <% end %>
       </table>
     </div>
-
-    <%= link_to 'Новая задача', new_status_of_implementation_path , class: "btn btn-large btn-primary" %>
 
 
 <% else %>

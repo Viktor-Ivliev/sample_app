@@ -2,14 +2,17 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+
   def index
     @users = User.paginate(page: params[:page])
   end
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "Пользователь удален"
     redirect_to users_url
   end
+
   def show
     @banner6 = Order.joins(table_service_orders: :service).where("service_id = 31")
     @user = User.find(params[:id])
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -30,15 +33,18 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
   def edit
     @user = User.find(params[:id])
   end
+
   def update
     @user = User.find(params[:id])
     param = user_params
     if user_params[:password].blank?
       param = param.except!(:password, :password_confirmation)
     end
+
     if @user.update_attributes(param)
       flash[:success] = "Профиль обновлён"
       redirect_to @user

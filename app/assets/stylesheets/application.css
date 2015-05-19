@@ -21,7 +21,6 @@
 .modal.fade.bs-example-modal-lg, .hidden_select{
     display: none;
 }
-
 .expired{
-	color: red !important;
+    color: #a50001 !important;
 }
